@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lot 1 Audit Preview · Mercator Ocean Website Concept</title>
+<meta name="description" content="A working preview of the Lot 1 SEO, performance and UX audit: real measurements taken on the live mercator-ocean.eu homepage on 31 July 2026, with findings and remedies.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%230A1729'/%3E%3Cpath d='M5 18 Q10 14 16 18 T27 18' stroke='%2381C5DF' stroke-width='2.2' fill='none'/%3E%3Cpath d='M5 13 Q10 9 16 13 T27 13' stroke='%2381C5DF' stroke-width='1.4' fill='none' opacity='.6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0a1729; --ink-74:rgba(10,23,41,.76); --ink-56:rgba(10,23,41,.60);
+  --paper:#ffffff; --ice:#f2f6f9; --surface:#ffffff;
+  --navy:#1d3058; --deep:#0a1729; --abyss:#0b1c2b;
+  --cyan:#81c5df; --act:#15618e; --act-deep:#0f4b6f;
+  --deep-ink:#eef4f9; --deep-ink-70:rgba(238,244,249,.78);
+  --hi:#8c1f26; --hi-bg:#fbeceb; --med:#8a5a12; --med-bg:#fdf3e0; --ok:#1d5c38; --ok-bg:#e9f5ee;
+  --radius:999px; --container:1180px;
+  --ease:cubic-bezier(0.625,0.05,0,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:"Hanken Grotesk",-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.55;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;overflow-x:clip}
+::selection{background:var(--navy);color:#fff}
+.wrap{max-width:var(--container);margin:0 auto;padding:0 24px}
+.disp{font-family:"Jost",sans-serif;font-weight:600;letter-spacing:-0.01em;line-height:1.08}
+.t-hero{font-size:clamp(2.4rem,5vw,3.8rem);font-weight:600;letter-spacing:-0.018em}
+.t-display{font-size:clamp(1.8rem,3.6vw,2.7rem)}
+.t-lead{font-size:clamp(1.06rem,1.5vw,1.24rem);color:var(--ink-74);line-height:1.55}
+.t-eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--act)}
+.skip-link{position:absolute;left:1rem;top:-4rem;z-index:200;background:var(--ink);color:#fff;padding:.7rem 1.2rem;border-radius:6px;transition:top .2s;text-decoration:none;font-weight:600}
+.skip-link:focus{top:1rem}
+:focus-visible{outline:3px solid var(--act);outline-offset:3px;border-radius:2px}
+.concept-note{background:var(--abyss);color:var(--deep-ink-70);text-align:center;font-size:.8rem;padding:.45rem 1rem}
+.concept-note a{color:var(--deep-ink)}
+.nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);-webkit-backdrop-filter:saturate(1.4) blur(16px);backdrop-filter:saturate(1.4) blur(16px);border-bottom:1px solid rgba(10,23,41,.1)}
+.nav-inner{display:flex;align-items:center;gap:1.5rem;height:72px;max-width:var(--container);margin:0 auto;padding:0 24px}
+.brand{display:flex;align-items:center;text-decoration:none;margin-right:auto}
+.brand img{display:block;height:40px;width:auto}
+.nav-links{display:flex;gap:1.3rem;list-style:none}
+.nav-links>li{display:flex;align-items:center}
+.nav-links a{color:var(--ink-74);text-decoration:none;font-size:.93rem;font-weight:600;transition:color .2s}
+.nav-links a:hover,.nav-links a[aria-current="page"]{color:var(--ink)}
+.nav-links>li>a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--act)}
+.btn{display:inline-flex;align-items:center;gap:.5rem;border-radius:var(--radius);text-decoration:none;font-weight:700;border:none;cursor:pointer;font-family:"Hanken Grotesk",sans-serif;transition:transform .18s var(--ease),background .25s,color .25s;white-space:nowrap}
+.btn:active{transform:scale(.96)}
+.btn-primary{background:var(--navy);color:#fff;padding:.7rem 1.5rem;font-size:.94rem}
+.btn-primary:hover{background:var(--act-deep)}
+.btn-lg{padding:.95rem 2rem;font-size:1.02rem}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:.5rem}
+.nav-toggle span{display:block;width:22px;height:2px;background:var(--ink);margin:5px 0;transition:.3s var(--ease)}
+section{scroll-margin-top:88px}
+.pad{padding:6rem 0}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-bottom:2.8rem}
+.sec-head .t-lead{max-width:32em}
+.demo-note{display:inline-block;background:var(--ice);border-radius:8px;padding:.5rem .9rem;font-size:.8rem;color:var(--ink-56);margin-top:1.2rem}
+
+/* hero */
+.hero{background:var(--deep);color:#fff;padding:6.5rem 0 4.5rem}
+.hero .t-eyebrow{color:var(--cyan)}
+.hero h1{color:#fff;max-width:16ch;margin:.9rem 0 1.4rem}
+.hero p{color:rgba(238,244,249,.88);max-width:40em;font-size:clamp(1.02rem,1.4vw,1.18rem)}
+
+/* summary strip */
+.proof{border-top:1px solid rgba(10,23,41,.12);border-bottom:1px solid rgba(10,23,41,.12);background:var(--ice)}
+.proof-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;padding:2.1rem 24px;max-width:var(--container);margin:0 auto}
+.proof b{font-family:"Jost",sans-serif;font-size:2.1rem;font-weight:600;display:block;line-height:1.05}
+.proof span{font-size:.88rem;color:var(--ink-56)}
+
+/* findings */
+.finding{display:grid;grid-template-columns:120px 1.1fr 1fr 1fr;gap:1.6rem;padding:1.7rem 0;border-top:1px solid rgba(10,23,41,.12);align-items:start}
+.finding:last-child{border-bottom:1px solid rgba(10,23,41,.12)}
+.finding h3{font-family:"Jost",sans-serif;font-weight:600;font-size:1.18rem;line-height:1.2}
+.finding p{font-size:.92rem;color:var(--ink-74)}
+.finding .lbl{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-56);display:block;margin-bottom:.3rem}
+.sev{display:inline-block;font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.34rem .8rem;border-radius:var(--radius)}
+.sev-hi{background:var(--hi-bg);color:var(--hi)}
+.sev-med{background:var(--med-bg);color:var(--med)}
+.sev-ok{background:var(--ok-bg);color:var(--ok)}
+.finding code{font-family:ui-monospace,Consolas,monospace;font-size:.85em;background:var(--ice);padding:.1em .4em;border-radius:4px}
+
+/* positives */
+.goods{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem 2rem;list-style:none}
+.goods li{padding:.9rem 0 .9rem 1.6rem;position:relative;font-size:.95rem;color:var(--ink-74);border-top:1px solid rgba(10,23,41,.1)}
+.goods li::before{content:"✓";position:absolute;left:0;color:var(--ok);font-weight:700}
+
+/* webp proof */
+.webp-proof{display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;align-items:center}
+.figure{border-radius:14px;overflow:hidden;position:relative;background:rgba(238,244,249,.06)}
+.figure img{display:block;width:100%;height:auto}
+.webp-chip{position:absolute;top:.8rem;right:.8rem;background:rgba(10,23,41,.85);color:#fff;font-size:.72rem;font-weight:700;padding:.35rem .7rem;border-radius:var(--radius)}
+.weightbar{display:grid;gap:1rem;margin-top:1.6rem}
+.weightbar .row{display:grid;gap:.35rem}
+.weightbar .lab{display:flex;justify-content:space-between;font-size:.85rem;color:var(--deep-ink-70)}
+.weightbar .bar{height:10px;border-radius:5px;background:rgba(238,244,249,.14);overflow:hidden}
+.weightbar .fill{height:100%;border-radius:5px;background:var(--cyan)}
+
+/* scope */
+.scope{display:grid;grid-template-columns:1fr 1fr;gap:0 4rem}
+.scope ul{list-style:none}
+.scope li{padding:1rem 0 1rem 1.8rem;border-top:1px solid rgba(10,23,41,.12);position:relative;color:var(--ink-74)}
+.scope li::before{content:"";position:absolute;left:0;top:1.45rem;width:9px;height:9px;border-radius:50%;background:var(--act)}
+.scope li b{color:var(--ink);font-weight:600}
+
+.deep-band{background:var(--deep);color:var(--deep-ink)}
+.deep-band .t-eyebrow{color:var(--cyan)}
+.deep-band h2,.deep-band h3{color:#fff}
+.deep-band p{color:var(--deep-ink-70)}
+.cyan-band{background:var(--navy);color:#fff;text-align:center}
+.cyan-band h2{color:#fff;max-width:26ch;margin:0 auto}
+.cyan-band p{color:rgba(255,255,255,.9);max-width:36em;margin:1.2rem auto 0}
+.cyan-band .btn{background:var(--cyan);color:var(--deep);margin-top:2rem}
+.cyan-band .btn:hover{background:#a3d4e8}
+
+footer{background:var(--abyss);color:var(--deep-ink-70);padding:3.6rem 0 2.6rem;font-size:.92rem}
+footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;max-width:var(--container);margin:0 auto;padding:0 24px}
+footer h4{color:#fff;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.9rem}
+footer a{color:var(--deep-ink-70)}
+footer a:hover{color:#fff}
+footer ul{list-style:none;display:grid;gap:.5rem}
+.foot-legal{max-width:var(--container);margin:2.6rem auto 0;padding:1.4rem 24px 0;border-top:1px solid rgba(238,244,249,.14);font-size:.8rem;color:rgba(238,244,249,.5)}
+.foot-legal a{color:rgba(238,244,249,.7)}
+
+.motion .rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.motion .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.rv{opacity:1 !important;transform:none !important}}
+
+@media (max-width:960px){
+  .finding{grid-template-columns:1fr;gap:.7rem}
+  .goods{grid-template-columns:1fr}
+  .webp-proof,.scope{grid-template-columns:1fr}
+  .proof-inner{grid-template-columns:repeat(2,1fr)}
+  footer .cols{grid-template-columns:1fr 1fr}
+  .nav-links{position:fixed;inset:72px 0 auto 0;background:var(--paper);flex-direction:column;gap:0;padding:.6rem 0 1rem;border-bottom:1px solid rgba(10,23,41,.12);transform:translateY(-130%);transition:transform .35s var(--ease);z-index:99}
+  .nav-links.open{transform:none}
+  .nav-links a{display:block;padding:.8rem 24px;font-size:1.05rem}
+  .nav-toggle{display:block}
+  .nav .btn-primary{display:none}
+}
+@media (max-width:560px){.pad{padding:4.2rem 0}.hero{padding:4.5rem 0 3.5rem}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="concept-note">Unaffiliated redesign concept prepared for tender 26516-MO-WEB by Midnight Space. Not the official Mercator Ocean website.</div>
+
+<nav class="nav" aria-label="Main">
+  <div class="nav-inner">
+    <a class="brand" href="index.html" aria-label="Mercator Ocean concept home">
+      <img src="assets/logo-moi-dark.svg" alt="Mercator Ocean International logo" width="142" height="40">
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="audit.html" aria-current="page">Audit · Lot 1</a></li>
+      <li><a href="intranet.html">Development · Lot 2</a></li>
+      <li><a href="translation.html">Translation · Lot 3</a></li>
+      <li><a href="approach.html">Approach</a></li>
+      <li><a href="credits.html">Credits</a></li>
+    </ul>
+    <a class="btn btn-primary" href="approach.html">Delivery approach</a>
+  </div>
+</nav>
+
+<main id="main">
+
+<header class="hero">
+  <div class="wrap">
+    <p class="t-eyebrow rv">Lot 1 · 26516L01-MO-WEB SEO · €80,000 · 24 months</p>
+    <h1 class="disp t-hero rv">We started the audit early.</h1>
+    <p class="rv">On 31 July 2026 we measured the live mercator-ocean.eu homepage: one cold-cache lab pageload, instrumented through the browser performance API. Below are nine real findings, each with its evidence and its remedy. The full Lot 1 audit goes far deeper; this page shows how we work.</p>
+  </div>
+</header>
+
+<div class="proof" role="group" aria-label="Headline measurements">
+  <div class="proof-inner">
+    <div class="rv"><b>1,297 KB</b><span>homepage transfer weight, 81% of it imagery</span></div>
+    <div class="rv"><b>31</b><span>separate stylesheets requested</span></div>
+    <div class="rv"><b>0</b><span>hreflang tags on a bilingual EN/FR site</span></div>
+    <div class="rv"><b>4.2 s</b><span>full load event, single lab run</span></div>
+  </div>
+</div>
+
+<section class="pad" aria-labelledby="find-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="t-eyebrow rv">Findings</p>
+        <h2 class="disp t-display rv" id="find-h">Nine findings from one pageload.</h2>
+      </div>
+      <p class="t-lead rv">Severity reflects combined SEO, performance and UX impact. Every number below was measured, not estimated.</p>
+    </div>
+
+    <div class="finding rv">
+      <span class="sev sev-hi">High</span>
+      <div><h3>Homepage has no meta description</h3></div>
+      <div><span class="lbl">Evidence</span><p><code>meta[name=description]</code> is absent from <code>mercator-ocean.eu</code>. Search engines improvise the snippet that represents the organisation to the world.</p></div>
+      <div><span class="lbl">Remedy</span><p>Descriptions authored for every template type, generated from structured fields so editors never ship a page without one.</p></div>
+    </div>
+
+    <div class="finding rv">
+      <span class="sev sev-hi">High</span>
+      <div><h3>Title tag duplicates the brand</h3></div>
+      <div><span class="lbl">Evidence</span><p>The homepage title is "Mercator Ocean International - Mercator Ocean International": the brand twice, zero keywords about ocean forecasting, Copernicus or the Digital Twin.</p></div>
+      <div><span class="lbl">Remedy</span><p>A title pattern that leads with the mission ("Ocean forecasting and digital Ocean systems") and keeps the brand once.</p></div>
+    </div>
+
+    <div class="finding rv">
+      <span class="sev sev-hi">High</span>
+      <div><h3>No hreflang on a bilingual site</h3></div>
+      <div><span class="lbl">Evidence</span><p>The site publishes English and French versions via WPML, yet zero <code>hreflang</code> alternates are declared. French-language search engines cannot reliably serve French users the French pages.</p></div>
+      <div><span class="lbl">Remedy</span><p>Automatic <code>hreflang</code> pairs emitted for every translated URL, validated in Search Console. This is also foundational for Lot 3.</p></div>
+    </div>
+
+    <div class="finding rv">
+      <span class="sev sev-hi">High</span>
+      <div><h3>Zero next-gen images: 1,046 KB of PNG and JPEG</h3></div>
+      <div><span class="lbl">Evidence</span><p>14 legacy-format images and not a single WebP or AVIF. Imagery is 1,046 KB of the 1,297 KB page: 81% of everything the visitor downloads.</p></div>
+      <div><span class="lbl">Remedy</span><p>Automated WebP/AVIF conversion in the media pipeline. This concept site already serves your own SST maps that way; proof below.</p></div>
+    </div>
+
+    <div class="finding rv">
+      <span class="sev sev-med">Medium</span>
+      <div><h3>31 stylesheets and 25 external scripts</h3></div>
+      <div><span class="lbl">Evidence</span><p>The homepage requests 31 separate CSS files and 25 external JS files: classic WordPress plugin accumulation, each one a render-blocking risk and a point of failure.</p></div>
+      <div><span class="lbl">Remedy</span><p>Asset audit, bundling and critical-CSS extraction; a plugin governance rule so the count cannot silently grow back.</p></div>
+    </div>
+
+    <div class="finding rv">
+      <span class="sev sev-med">Medium</span>
+      <div><h3>10 of 37 images missing alt text</h3></div>
+      <div><span class="lbl">Evidence</span><p>27% of homepage images carry no alternative text, invisible to screen readers and to image search.</p></div>
+      <div><span class="lbl">Remedy</span><p>Alt text made a required field in the CMS media workflow; a one-time editorial backfill for the existing library.</p></div>
+    </div>
+
+    <div class="finding rv">
+      <span class="sev sev-med">Medium</span>
+      <div><h3>Screenshots published as content imagery</h3></div>
+      <div><span class="lbl">Evidence</span><p>Files named <code>Screenshot-2026-06-29-143125.png</code> (216 KB) serve as homepage content images: heavy, unoptimised, and unnamed for search.</p></div>
+      <div><span class="lbl">Remedy</span><p>An editorial asset workflow: meaningful filenames, correct dimensions, compression on upload.</p></div>
+    </div>
+
+    <div class="finding rv">
+      <span class="sev sev-med">Medium</span>
+      <div><h3>Metadata copy-paste errors on deeper pages</h3></div>
+      <div><span class="lbl">Evidence</span><p>The live tender page for this very consultation carries a meta description copy-pasted from a different tender (the Copernicus Ocean State Reports consultation): evidence the metadata workflow has no guardrails.</p></div>
+      <div><span class="lbl">Remedy</span><p>Template-level metadata defaults plus a pre-publish checklist surfaced inside the CMS.</p></div>
+    </div>
+
+    <div class="finding rv">
+      <span class="sev sev-med">Medium</span>
+      <div><h3>Interactive at 2.7 s, loaded at 4.2 s</h3></div>
+      <div><span class="lbl">Evidence</span><p><code>domInteractive</code> 2.7 s and <code>loadEventEnd</code> 4.2 s in a single lab run. Lab numbers need field confirmation, but the asset weight above explains them.</p></div>
+      <div><span class="lbl">Remedy</span><p>Performance budgets enforced in CI, validated against real-user CrUX field data across the full Lot 1 audit.</p></div>
+    </div>
+
+    <p class="demo-note rv">Method: single cold-cache pageload of mercator-ocean.eu, 31 July 2026, Chromium browser, instrumented via the Performance API (resource timing, navigation timing, DOM inspection). A production audit adds field data, crawling and log analysis; scope below.</p>
+  </div>
+</section>
+
+<section class="pad" aria-labelledby="good-h" style="background:var(--ice)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="t-eyebrow rv">Honesty clause</p>
+        <h2 class="disp t-display rv" id="good-h">What is already right.</h2>
+      </div>
+      <p class="t-lead rv">An audit that only criticises is a sales document. These homepage fundamentals are correctly in place today.</p>
+    </div>
+    <ul class="goods">
+      <li class="rv">Canonical URL declared correctly</li>
+      <li class="rv">Viewport meta present; the site is responsive</li>
+      <li class="rv">Exactly one H1, and it is the right message</li>
+      <li class="rv">Native lazy-loading active on 32 of 37 images</li>
+      <li class="rv">Open Graph tags present (7) for social sharing</li>
+      <li class="rv">JSON-LD structured data block present</li>
+    </ul>
+  </div>
+</section>
+
+<section class="pad deep-band" aria-labelledby="webp-h">
+  <div class="wrap">
+    <div class="webp-proof">
+      <figure class="figure rv">
+        <img src="assets/event-synobs.webp" alt="SynObs and Ocean Observing Co-Design event visual from Mercator Ocean's media library" width="1400" height="788" loading="lazy">
+        <span class="webp-chip">This file: 72 KB WebP</span>
+      </figure>
+      <div>
+        <p class="t-eyebrow rv">Working proof</p>
+        <h2 class="disp t-display rv" id="webp-h">2,071 KB → 72 KB.</h2>
+        <p class="rv" style="margin-top:1rem">This image is published on mercator-ocean.eu as a 2,071 KB PNG. The copy on this page is the same asset, resized to its display size and encoded as WebP: 72 KB. 96% lighter, visually identical at this scale.</p>
+        <div class="weightbar rv" aria-hidden="true">
+          <div class="row"><div class="lab"><span>Original PNG on your site</span><span>2,071 KB</span></div><div class="bar"><div class="fill" style="width:100%"></div></div></div>
+          <div class="row"><div class="lab"><span>WebP on this page</span><span>72 KB</span></div><div class="bar"><div class="fill" style="width:3.5%"></div></div></div>
+        </div>
+        <p class="rv" style="margin-top:1.4rem;font-size:.9rem">Applied across the media library, this single change removes most of the 1,046 KB of homepage image weight, and it is fully automatable in the publishing pipeline.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pad" aria-labelledby="scope-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="t-eyebrow rv">Lot 1, delivered in full</p>
+        <h2 class="disp t-display rv" id="scope-h">What the complete audit covers.</h2>
+      </div>
+      <p class="t-lead rv">This page previews the method on one URL. The contracted audit is a programme across the full estate, in both languages.</p>
+    </div>
+    <div class="scope">
+      <ul>
+        <li class="rv"><b>Full technical crawl</b> of every indexable URL: status codes, redirects, canonical logic, index coverage, sitemap health.</li>
+        <li class="rv"><b>Core Web Vitals field data</b> from CrUX at the 75th percentile, correlated with lab traces per template.</li>
+        <li class="rv"><b>Server log analysis</b>: how search engines actually crawl the site, budget waste, orphan pages.</li>
+        <li class="rv"><b>Bilingual keyword and topical mapping</b> in English and French: ocean forecasting, Copernicus Marine, Digital Twin and the institutional vocabulary.</li>
+        <li class="rv"><b>AI-search readiness</b>: structured data depth, content extractability, and how the site surfaces in answer engines.</li>
+      </ul>
+      <ul>
+        <li class="rv"><b>UX heuristic evaluation</b> of the key journeys: researcher seeking data, journalist seeking a fact, institutional partner seeking governance.</li>
+        <li class="rv"><b>Accessibility review</b> against WCAG 2.1 AA with an issue register per template.</li>
+        <li class="rv"><b>Competitor and SERP analysis</b> across comparable ocean and Earth-observation institutions.</li>
+        <li class="rv"><b>Prioritised roadmap</b>: every finding scored on effort × impact, sequenced into quarters, owners proposed.</li>
+        <li class="rv"><b>Re-measurement</b> at the end of the period so the audit is accountable to its own numbers.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="pad cyan-band" aria-labelledby="cta-h">
+  <div class="wrap">
+    <h2 class="disp t-display rv" id="cta-h">The other two lots are previewed too.</h2>
+    <p class="rv">Lot 2's development approach and intranet concept, and Lot 3's working bilingual layer, each have their own page in this concept.</p>
+    <a class="btn btn-lg rv" href="approach.html">Read the delivery approach</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="cols">
+    <div>
+      <h4>Mercator Ocean International · Concept</h4>
+      <p>An unaffiliated redesign concept prepared as a working annex to Midnight Space's tender response for consultation 26516-MO-WEB SEO TRANSLATION (TED 478028-2026). All measurements dated 31 July 2026.</p>
+    </div>
+    <div>
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="audit.html">Audit · Lot 1</a></li>
+        <li><a href="intranet.html">Development · Lot 2</a></li>
+        <li><a href="translation.html">Translation · Lot 3</a></li>
+        <li><a href="approach.html">Approach</a></li>
+        <li><a href="credits.html">Credits</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Midnight Space</h4>
+      <ul>
+        <li><a href="https://midnightspaceconsultancy.com" rel="noopener">midnightspaceconsultancy.com</a></li>
+        <li><a href="https://www.mercator-ocean.eu/" rel="noopener">Official Mercator Ocean site</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-legal">
+    <p>Imagery © Mercator Ocean International, used within this non-commercial concept with credit; removed immediately on request. Concept, design and code © Midnight Space.</p>
+  </div>
+</footer>
+
+<script>
+const toggle=document.querySelector('.nav-toggle'),links=document.getElementById('nav-links');
+toggle.addEventListener('click',()=>{const o=links.classList.toggle('open');toggle.setAttribute('aria-expanded',o)});
+links.addEventListener('click',e=>{if(e.target.closest('a')){links.classList.remove('open');toggle.setAttribute('aria-expanded','false');}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&links.classList.contains('open')){links.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.focus();}});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" integrity="sha384-HOvlOYPIs/zjoIkWUGXkVmXsjr8GuZLV+Q+rcPwmJOVZVpvTSXQChiN4t9Euv9Vc" crossorigin="anonymous" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" integrity="sha384-P8VzCVnT9NBUkMrpcIZrJbA7EBjJvh/fJS6PmP+4nLIM284DtsImIv8D0fFjIkeh" crossorigin="anonymous" defer></script>
+<script defer>
+window.addEventListener('DOMContentLoaded',()=>{
+if(window.gsap&&window.ScrollTrigger&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  gsap.registerPlugin(ScrollTrigger);
+  document.documentElement.classList.add('motion');
+  setTimeout(()=>{if(!ScrollTrigger.getAll().length)document.querySelectorAll('.rv:not(.in)').forEach(el=>el.classList.add('in'));},3000);
+  document.querySelectorAll('.hero .rv').forEach((el,i)=>setTimeout(()=>el.classList.add('in'),180+i*90));
+  ScrollTrigger.batch('.rv:not(.hero .rv)',{start:'top 88%',once:true,onEnter:b=>b.forEach((el,i)=>setTimeout(()=>el.classList.add('in'),i*80))});
+}});
+</script>
+</body>
+</html>

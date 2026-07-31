@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lot 3 Translation Preview · Mercator Ocean Website Concept</title>
+<meta name="description" content="A working preview of the Lot 3 bilingual EN/FR layer: a live language toggle on real content, a locked scientific glossary, and the production pipeline that keeps the French side current.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%230A1729'/%3E%3Cpath d='M5 18 Q10 14 16 18 T27 18' stroke='%2381C5DF' stroke-width='2.2' fill='none'/%3E%3Cpath d='M5 13 Q10 9 16 13 T27 13' stroke='%2381C5DF' stroke-width='1.4' fill='none' opacity='.6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0a1729; --ink-74:rgba(10,23,41,.76); --ink-56:rgba(10,23,41,.60);
+  --paper:#ffffff; --ice:#f2f6f9; --surface:#ffffff;
+  --navy:#1d3058; --deep:#0a1729; --abyss:#0b1c2b;
+  --cyan:#81c5df; --act:#15618e; --act-deep:#0f4b6f;
+  --deep-ink:#eef4f9; --deep-ink-70:rgba(238,244,249,.78);
+  --hi:#8c1f26; --hi-bg:#fbeceb; --med:#8a5a12; --med-bg:#fdf3e0; --ok:#1d5c38; --ok-bg:#e9f5ee;
+  --radius:999px; --container:1180px;
+  --ease:cubic-bezier(0.625,0.05,0,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:"Hanken Grotesk",-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.55;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;overflow-x:clip}
+::selection{background:var(--navy);color:#fff}
+.wrap{max-width:var(--container);margin:0 auto;padding:0 24px}
+.disp{font-family:"Jost",sans-serif;font-weight:600;letter-spacing:-0.01em;line-height:1.08}
+.t-hero{font-size:clamp(2.4rem,5vw,3.8rem);font-weight:600;letter-spacing:-0.018em}
+.t-display{font-size:clamp(1.8rem,3.6vw,2.7rem)}
+.t-lead{font-size:clamp(1.06rem,1.5vw,1.24rem);color:var(--ink-74);line-height:1.55}
+.t-eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--act)}
+.skip-link{position:absolute;left:1rem;top:-4rem;z-index:200;background:var(--ink);color:#fff;padding:.7rem 1.2rem;border-radius:6px;transition:top .2s;text-decoration:none;font-weight:600}
+.skip-link:focus{top:1rem}
+:focus-visible{outline:3px solid var(--act);outline-offset:3px;border-radius:2px}
+.vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.concept-note{background:var(--abyss);color:var(--deep-ink-70);text-align:center;font-size:.8rem;padding:.45rem 1rem}
+.concept-note a{color:var(--deep-ink)}
+.nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);-webkit-backdrop-filter:saturate(1.4) blur(16px);backdrop-filter:saturate(1.4) blur(16px);border-bottom:1px solid rgba(10,23,41,.1)}
+.nav-inner{display:flex;align-items:center;gap:1.5rem;height:72px;max-width:var(--container);margin:0 auto;padding:0 24px}
+.brand{display:flex;align-items:center;text-decoration:none;margin-right:auto}
+.brand img{display:block;height:40px;width:auto}
+.nav-links{display:flex;gap:1.3rem;list-style:none}
+.nav-links>li{display:flex;align-items:center}
+.nav-links a{color:var(--ink-74);text-decoration:none;font-size:.93rem;font-weight:600;transition:color .2s}
+.nav-links a:hover,.nav-links a[aria-current="page"]{color:var(--ink)}
+.nav-links>li>a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--act)}
+.btn{display:inline-flex;align-items:center;gap:.5rem;border-radius:var(--radius);text-decoration:none;font-weight:700;border:none;cursor:pointer;font-family:"Hanken Grotesk",sans-serif;transition:transform .18s var(--ease),background .25s,color .25s;white-space:nowrap}
+.btn:active{transform:scale(.96)}
+.btn-primary{background:var(--navy);color:#fff;padding:.7rem 1.5rem;font-size:.94rem}
+.btn-primary:hover{background:var(--act-deep)}
+.btn-lg{padding:.95rem 2rem;font-size:1.02rem}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:.5rem}
+.nav-toggle span{display:block;width:22px;height:2px;background:var(--ink);margin:5px 0;transition:.3s var(--ease)}
+section{scroll-margin-top:88px}
+.pad{padding:6rem 0}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-bottom:2.8rem}
+.sec-head .t-lead{max-width:32em}
+.demo-note{display:inline-block;background:var(--ice);border-radius:8px;padding:.5rem .9rem;font-size:.8rem;color:var(--ink-56);margin-top:1.2rem}
+
+/* hero */
+.hero{background:var(--deep);color:#fff;padding:6.5rem 0 4.5rem}
+.hero .t-eyebrow{color:var(--cyan)}
+.hero h1{color:#fff;max-width:16ch;margin:.9rem 0 1.4rem}
+.hero p{color:rgba(238,244,249,.88);max-width:40em;font-size:clamp(1.02rem,1.4vw,1.18rem)}
+
+/* working demo */
+.demo-tools{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1.3rem}
+.lang-switch{display:inline-flex;background:var(--paper);border:1px solid rgba(10,23,41,.16);border-radius:var(--radius);padding:4px;gap:4px}
+.lang-switch button{border:none;background:transparent;font-family:"Hanken Grotesk",sans-serif;font-weight:700;font-size:.92rem;padding:.55rem 1.4rem;border-radius:var(--radius);cursor:pointer;color:var(--ink-74);transition:background .2s,color .2s}
+.lang-switch button:hover{color:var(--ink)}
+.lang-switch button[aria-pressed="true"]{background:var(--navy);color:#fff}
+.chip-illu{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--navy);color:#fff;padding:.35rem .8rem;border-radius:var(--radius)}
+.demo-status{font-size:.85rem;color:var(--ink-56);margin-bottom:1.2rem}
+.demo-card{background:var(--paper);border:1px solid rgba(10,23,41,.12);border-radius:14px;padding:2.2rem;max-width:800px}
+.demo-card .kicker{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--act)}
+.demo-card h3{font-family:"Jost",sans-serif;font-weight:600;font-size:clamp(1.3rem,2.2vw,1.6rem);line-height:1.15;color:var(--navy);margin:.7rem 0 1rem}
+.demo-card p{font-size:.98rem;color:var(--ink-74)}
+.demo-card p+p{margin-top:1rem}
+
+/* glossary */
+.gloss-wrap{overflow-x:auto}
+.gloss{width:100%;border-collapse:collapse;min-width:680px}
+.gloss th{text-align:left;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-56);padding:.7rem 1.4rem .7rem 0;border-bottom:1px solid rgba(10,23,41,.24)}
+.gloss td{padding:1.1rem 1.4rem 1.1rem 0;border-bottom:1px solid rgba(10,23,41,.12);vertical-align:top;font-size:.95rem}
+.gloss td.term{font-weight:600;color:var(--ink);width:19%}
+.gloss td.why{color:var(--ink-74);font-size:.92rem}
+.gloss i{font-style:italic}
+
+/* pipeline */
+.steps{list-style:none;counter-reset:step;max-width:900px}
+.steps li{counter-increment:step;display:grid;grid-template-columns:64px 1fr;gap:1.5rem;padding:1.7rem 0;border-top:1px solid rgba(238,244,249,.16);align-items:start}
+.steps li:last-child{border-bottom:1px solid rgba(238,244,249,.16)}
+.steps li::before{content:counter(step,decimal-leading-zero);font-family:"Jost",sans-serif;font-weight:600;font-size:1.7rem;line-height:1;color:var(--cyan);padding-top:.15rem}
+.steps h3{font-family:"Jost",sans-serif;font-weight:600;font-size:1.18rem;line-height:1.2;color:#fff;margin-bottom:.4rem}
+.steps p{font-size:.95rem}
+.deep-band a{color:var(--cyan)}
+
+/* operations */
+.ops{display:grid;grid-template-columns:repeat(2,1fr);gap:0 4rem;list-style:none}
+.ops li{padding:1.4rem 0;border-top:1px solid rgba(10,23,41,.12)}
+.ops h3{font-family:"Jost",sans-serif;font-weight:600;font-size:1.15rem;line-height:1.2;margin-bottom:.4rem}
+.ops p{font-size:.95rem;color:var(--ink-74)}
+
+.deep-band{background:var(--deep);color:var(--deep-ink)}
+.deep-band .t-eyebrow{color:var(--cyan)}
+.deep-band h2,.deep-band h3{color:#fff}
+.deep-band p{color:var(--deep-ink-70)}
+.cyan-band{background:var(--navy);color:#fff;text-align:center}
+.cyan-band h2{color:#fff;max-width:26ch;margin:0 auto}
+.cyan-band p{color:rgba(255,255,255,.9);max-width:36em;margin:1.2rem auto 0}
+.cyan-band .btn{background:var(--cyan);color:var(--deep);margin-top:2rem}
+.cyan-band .btn:hover{background:#a3d4e8}
+
+footer{background:var(--abyss);color:var(--deep-ink-70);padding:3.6rem 0 2.6rem;font-size:.92rem}
+footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;max-width:var(--container);margin:0 auto;padding:0 24px}
+footer h4{color:#fff;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.9rem}
+footer a{color:var(--deep-ink-70)}
+footer a:hover{color:#fff}
+footer ul{list-style:none;display:grid;gap:.5rem}
+.foot-legal{max-width:var(--container);margin:2.6rem auto 0;padding:1.4rem 24px 0;border-top:1px solid rgba(238,244,249,.14);font-size:.8rem;color:rgba(238,244,249,.5)}
+.foot-legal a{color:rgba(238,244,249,.7)}
+
+.motion .rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.motion .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.rv{opacity:1 !important;transform:none !important}}
+
+@media (max-width:960px){
+  .ops{grid-template-columns:1fr}
+  .steps li{grid-template-columns:48px 1fr;gap:1.1rem}
+  .demo-card{padding:1.6rem}
+  footer .cols{grid-template-columns:1fr 1fr}
+  .nav-links{position:fixed;inset:72px 0 auto 0;background:var(--paper);flex-direction:column;gap:0;padding:.6rem 0 1rem;border-bottom:1px solid rgba(10,23,41,.12);transform:translateY(-130%);transition:transform .35s var(--ease);z-index:99}
+  .nav-links.open{transform:none}
+  .nav-links a{display:block;padding:.8rem 24px;font-size:1.05rem}
+  .nav-toggle{display:block}
+  .nav .btn-primary{display:none}
+}
+@media (max-width:560px){.pad{padding:4.2rem 0}.hero{padding:4.5rem 0 3.5rem}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="concept-note">Unaffiliated redesign concept prepared for tender 26516-MO-WEB by Midnight Space. Not the official Mercator Ocean website.</div>
+
+<nav class="nav" aria-label="Main">
+  <div class="nav-inner">
+    <a class="brand" href="index.html" aria-label="Mercator Ocean concept home">
+      <img src="assets/logo-moi-dark.svg" alt="Mercator Ocean International logo" width="142" height="40">
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="audit.html">Audit · Lot 1</a></li>
+      <li><a href="intranet.html">Development · Lot 2</a></li>
+      <li><a href="translation.html" aria-current="page">Translation · Lot 3</a></li>
+      <li><a href="approach.html">Approach</a></li>
+      <li><a href="credits.html">Credits</a></li>
+    </ul>
+    <a class="btn btn-primary" href="approach.html">Delivery approach</a>
+  </div>
+</nav>
+
+<main id="main">
+
+<header class="hero">
+  <div class="wrap">
+    <p class="t-eyebrow rv">Lot 3 · 26516L03 · €20,000 · 24 months</p>
+    <h1 class="disp t-hero rv">Every page, in both languages.</h1>
+    <p class="rv">Lot 3 asks for an automatic bilingual English/French translation system. This page contains a working demonstration: the toggle below switches a real content block between English and publication-grade French. That switch is the mechanism; the sections after it show how production translation is generated, locked, reviewed and kept current for 24 months.</p>
+  </div>
+</header>
+
+<section class="pad" style="background:var(--ice)" aria-labelledby="demo-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="t-eyebrow rv">Working demo</p>
+        <h2 class="disp t-display rv" id="demo-h">Switch the language yourself.</h2>
+      </div>
+      <p class="t-lead rv">One content block, two languages, no page reload. English is authored; French is served by the bilingual layer.</p>
+    </div>
+
+    <div class="demo-tools rv">
+      <div class="lang-switch" role="group" aria-label="Demo content language">
+        <button type="button" id="lang-en" aria-pressed="true">English</button>
+        <button type="button" id="lang-fr" aria-pressed="false">Français</button>
+      </div>
+      <span class="chip-illu">Illustrative concept</span>
+    </div>
+    <p class="demo-status rv" id="demo-status" aria-live="polite">Showing: English, as authored in the page markup.</p>
+
+    <article class="demo-card rv" id="demo-copy" lang="en">
+      <p class="kicker" data-t="kicker">Ocean Intelligence · European Digital Twin of the Ocean</p>
+      <h3 data-t="title">Digital ocean knowledge, accessible to all</h3>
+      <p data-t="p1">Mercator Ocean International co-develops the European Digital Twin of the Ocean (EDITO) on behalf of the European Commission. Its capability layers answer three questions about the ocean: what now, what next and what if.</p>
+      <p data-t="p2">The organisation also operates the Copernicus Marine Service for the European Union. The service provides free, open-access ocean data and counts more than 1.5 million users worldwide, with 85,000 subscribers as of 2024.</p>
+    </article>
+
+    <p class="demo-note rv" style="max-width:800px">Preview of the mechanism only. On this page, English lives in the markup and the French is a hand-checked dictionary in the page script. Note the localisation detail: 1.5 million becomes 1,5&nbsp;million and 85,000 becomes 85&nbsp;000. In production nothing is hand-written; every French page is produced by the pipeline described below.</p>
+  </div>
+</section>
+
+<section class="pad" aria-labelledby="gloss-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="t-eyebrow rv">Locked terminology</p>
+        <h2 class="disp t-display rv" id="gloss-h">Six terms that must never drift.</h2>
+      </div>
+      <p class="t-lead rv">An automatic system is only trustworthy on a scientific site when its vocabulary is locked before the first sentence is translated. An extract from the working glossary:</p>
+    </div>
+    <div class="gloss-wrap rv">
+      <table class="gloss">
+        <caption class="vh">Extract from the locked glossary: English term, French term, and why the pair is locked.</caption>
+        <thead>
+          <tr><th scope="col">English</th><th scope="col">French</th><th scope="col">Why it is locked</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="term">sea surface temperature</td>
+            <td class="term" lang="fr">température de surface de la mer</td>
+            <td class="why">This is the variable name behind the SST maps and dataset captions. An unlocked engine drifts between near-identical phrasings; a variable name must be identical everywhere it appears.</td>
+          </tr>
+          <tr>
+            <td class="term">reanalysis</td>
+            <td class="term" lang="fr">réanalyse</td>
+            <td class="why">A generic engine can render this as <i lang="fr">nouvelle analyse</i>, which reads as a second look at something. GLORYS12 is a reanalysis; the term names a product category, not an action.</td>
+          </tr>
+          <tr>
+            <td class="term">sea ice</td>
+            <td class="term" lang="fr">glace de mer</td>
+            <td class="why">The tempting rendering is <i lang="fr">banquise</i>, but banquise means pack ice, a narrower concept. Scientific usage keeps <i lang="fr">glace de mer</i> for the general variable.</td>
+          </tr>
+          <tr>
+            <td class="term">forecast</td>
+            <td class="term" lang="fr">prévision</td>
+            <td class="why"><i lang="fr">Prédiction</i> is the reflex machine output and the wrong register. Operational oceanography, like meteorology, issues <i lang="fr">prévisions</i>.</td>
+          </tr>
+          <tr>
+            <td class="term">biogeochemical</td>
+            <td class="term" lang="fr">biogéochimique</td>
+            <td class="why">A compound adjective that engines split or hyphenate inconsistently. One form is correct, and the whole corpus must use it every time.</td>
+          </tr>
+          <tr>
+            <td class="term">in-situ observations</td>
+            <td class="term" lang="fr">observations in situ</td>
+            <td class="why">The Latin stays untranslated, drops its hyphen in French and moves after the noun: three separate chances for an engine to improvise on one short phrase.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="demo-note rv">These six pairs are standard oceanographic terminology, shown here to demonstrate the format. The production glossary is proposed and agreed with Mercator Ocean's own scientists, then enforced by the engine on every page.</p>
+  </div>
+</section>
+
+<section class="pad deep-band" aria-labelledby="pipe-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="t-eyebrow rv">Production pipeline</p>
+        <h2 class="disp t-display rv" id="pipe-h">How a page becomes French.</h2>
+      </div>
+      <p class="t-lead rv" style="color:var(--deep-ink-70)">The demo above shows the mechanism on one block. Production runs as a pipeline, so no page ever depends on someone remembering to translate it.</p>
+    </div>
+    <ol class="steps">
+      <li class="rv">
+        <div>
+          <h3>Content is published in English</h3>
+          <p>Editors write and publish exactly as they do today. Lot 3 adds a layer beneath the site; it does not change the authoring workflow.</p>
+        </div>
+      </li>
+      <li class="rv">
+        <div>
+          <h3>The engine translates with the glossary enforced</h3>
+          <p>Machine translation produces the French draft with every locked term applied, so scientific vocabulary cannot drift between pages or between months.</p>
+        </div>
+      </li>
+      <li class="rv">
+        <div>
+          <h3>Translation memory stores every approved sentence</h3>
+          <p>An identical sentence is never translated twice. Recurring boilerplate stays word-for-word stable across the site, and the cost of re-translation falls over the 24 months.</p>
+        </div>
+      </li>
+      <li class="rv">
+        <div>
+          <h3>High-visibility pages queue for human review</h3>
+          <p>The homepage, governance and tender pages receive human sign-off before their French goes live. Long-tail pages publish automatically and enter the monthly quality sample.</p>
+        </div>
+      </li>
+      <li class="rv">
+        <div>
+          <h3>Publication emits automatic hreflang pairs</h3>
+          <p>Every EN/FR pair declares its alternate URL, so search engines serve French readers the French page. The <a href="audit.html">Lot 1 audit</a> measured zero hreflang tags on the live site today; the pipeline makes the fix structural rather than manual.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="pad" style="background:var(--ice)" aria-labelledby="ops-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="t-eyebrow rv">Ongoing operation</p>
+        <h2 class="disp t-display rv" id="ops-h">Operated, measured, corrected.</h2>
+      </div>
+      <p class="t-lead rv">The tender asks for implementation and operation. This is the monthly rhythm across the 24-month term.</p>
+    </div>
+    <ul class="ops">
+      <li class="rv">
+        <h3>Monthly glossary maintenance</h3>
+        <p>New terms are proposed from the month's published content, agreed with your team and locked into the engine. The glossary only grows; agreed terms never drift.</p>
+      </li>
+      <li class="rv">
+        <h3>Quality sampling on a rotating page set</h3>
+        <p>Each month a rotating sample of published French pages is re-read and scored, so quality is measured across the whole estate over time, not only on launch week.</p>
+      </li>
+      <li class="rv">
+        <h3>Coverage reporting</h3>
+        <p>A monthly report states what share of the estate is available in French, what is queued for human review and what changed. Coverage becomes a number, not an impression.</p>
+      </li>
+      <li class="rv">
+        <h3>Correction turnaround, same timezone</h3>
+        <p>A reported mistranslation is corrected and the fix is written back to the translation memory, so it cannot recur. We work from Belgium; Toulouse and we share CET, so same-day means the same day.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="pad cyan-band" aria-labelledby="cta-h">
+  <div class="wrap">
+    <h2 class="disp t-display rv" id="cta-h">Three lots, one coherent plan.</h2>
+    <p class="rv">Lot 3 stands on the hreflang groundwork identified in Lot 1 and ships through the publishing pipeline of Lot 2. The approach page shows the sequencing across the 24 months.</p>
+    <a class="btn btn-lg rv" href="approach.html">Read the delivery approach</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="cols">
+    <div>
+      <h4>Mercator Ocean International · Concept</h4>
+      <p>An unaffiliated redesign concept prepared as a working annex to Midnight Space's tender response for consultation 26516-MO-WEB SEO TRANSLATION (TED 478028-2026). All measurements dated 31 July 2026.</p>
+    </div>
+    <div>
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="audit.html">Audit · Lot 1</a></li>
+        <li><a href="intranet.html">Development · Lot 2</a></li>
+        <li><a href="translation.html">Translation · Lot 3</a></li>
+        <li><a href="approach.html">Approach</a></li>
+        <li><a href="credits.html">Credits</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Midnight Space</h4>
+      <ul>
+        <li><a href="https://midnightspaceconsultancy.com" rel="noopener">midnightspaceconsultancy.com</a></li>
+        <li><a href="https://www.mercator-ocean.eu/" rel="noopener">Official Mercator Ocean site</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-legal">
+    <p>Imagery © Mercator Ocean International, used within this non-commercial concept with credit; removed immediately on request. Concept, design and code © Midnight Space.</p>
+  </div>
+</footer>
+
+<script>
+const toggle=document.querySelector('.nav-toggle'),links=document.getElementById('nav-links');
+toggle.addEventListener('click',()=>{const o=links.classList.toggle('open');toggle.setAttribute('aria-expanded',o)});
+links.addEventListener('click',e=>{if(e.target.closest('a')){links.classList.remove('open');toggle.setAttribute('aria-expanded','false');}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&links.classList.contains('open')){links.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.focus();}});
+
+/* Working EN/FR demo: English lives in the markup above; French is this dictionary. */
+const FR={
+  kicker:"Intelligence océanique · Jumeau numérique européen de l'Océan",
+  title:"La connaissance numérique de l'Océan, accessible à tous",
+  p1:"Mercator Ocean International co-développe le jumeau numérique européen de l'Océan (EDITO) pour le compte de la Commission européenne. Ses couches de capacités répondent à trois questions sur l'Océan : what now, what next et what if.",
+  p2:"L'organisation opère également le service Copernicus Marine pour le compte de l'Union européenne. Le service fournit des données océaniques gratuites et en libre accès ; il compte plus de 1,5 million d'utilisateurs dans le monde, dont 85 000 abonnés en 2024."
+};
+const STATUS={
+  en:"Showing: English, as authored in the page markup.",
+  fr:"Showing: French, served by the bilingual layer this lot delivers."
+};
+const demoBlock=document.getElementById('demo-copy');
+const demoStatus=document.getElementById('demo-status');
+const btnEn=document.getElementById('lang-en'),btnFr=document.getElementById('lang-fr');
+const EN={};
+demoBlock.querySelectorAll('[data-t]').forEach(el=>{EN[el.dataset.t]=el.textContent;});
+function setDemoLang(l){
+  const d=l==='fr'?FR:EN;
+  demoBlock.querySelectorAll('[data-t]').forEach(el=>{el.textContent=d[el.dataset.t];});
+  demoBlock.setAttribute('lang',l);
+  btnEn.setAttribute('aria-pressed',String(l==='en'));
+  btnFr.setAttribute('aria-pressed',String(l==='fr'));
+  demoStatus.textContent=STATUS[l];
+}
+btnEn.addEventListener('click',()=>setDemoLang('en'));
+btnFr.addEventListener('click',()=>setDemoLang('fr'));
+</script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" integrity="sha384-HOvlOYPIs/zjoIkWUGXkVmXsjr8GuZLV+Q+rcPwmJOVZVpvTSXQChiN4t9Euv9Vc" crossorigin="anonymous" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" integrity="sha384-P8VzCVnT9NBUkMrpcIZrJbA7EBjJvh/fJS6PmP+4nLIM284DtsImIv8D0fFjIkeh" crossorigin="anonymous" defer></script>
+<script defer>
+window.addEventListener('DOMContentLoaded',()=>{
+if(window.gsap&&window.ScrollTrigger&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  gsap.registerPlugin(ScrollTrigger);
+  document.documentElement.classList.add('motion');
+  setTimeout(()=>{if(!ScrollTrigger.getAll().length)document.querySelectorAll('.rv:not(.in)').forEach(el=>el.classList.add('in'));},3000);
+  document.querySelectorAll('.hero .rv').forEach((el,i)=>setTimeout(()=>el.classList.add('in'),180+i*90));
+  ScrollTrigger.batch('.rv:not(.hero .rv)',{start:'top 88%',once:true,onEnter:b=>b.forEach((el,i)=>setTimeout(()=>el.classList.add('in'),i*80))});
+}});
+</script>
+</body>
+</html>

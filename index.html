@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mercator Ocean International · Website Concept</title>
+<meta name="description" content="Concept redesign for mercator-ocean.eu built for tender 26516-MO-WEB: SEO audit preview, development approach, and a working EN/FR bilingual layer. Unaffiliated concept by Midnight Space.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%230A1729'/%3E%3Cpath d='M5 18 Q10 14 16 18 T27 18' stroke='%2381C5DF' stroke-width='2.2' fill='none'/%3E%3Cpath d='M5 13 Q10 9 16 13 T27 13' stroke='%2381C5DF' stroke-width='1.4' fill='none' opacity='.6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   MERCATOR OCEAN INTERNATIONAL — CONCEPT REDESIGN
+   Palette from the live brand: deep navy #0A1729 / #1D3058,
+   sky cyan #81C5DF. Jost display (Avant Garde equivalent),
+   Hanken Grotesk body. WCAG 2.1 AA. Bilingual EN/FR layer.
+   ============================================================ */
+:root{
+  --ink:#0a1729; --ink-74:rgba(10,23,41,.76); --ink-56:rgba(10,23,41,.60);
+  --paper:#ffffff; --ice:#f2f6f9; --surface:#ffffff;
+  --navy:#1d3058; --deep:#0a1729; --abyss:#0b1c2b;
+  --cyan:#81c5df; --act:#15618e; --act-deep:#0f4b6f;
+  --deep-ink:#eef4f9; --deep-ink-70:rgba(238,244,249,.78);
+  --hi:#8c1f26; --hi-bg:#fbeceb; --med:#8a5a12; --med-bg:#fdf3e0; --ok:#1d5c38; --ok-bg:#e9f5ee;
+  --radius:999px; --container:1180px;
+  --ease:cubic-bezier(0.625,0.05,0,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:"Hanken Grotesk",-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.55;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;overflow-x:clip}
+::selection{background:var(--navy);color:#fff}
+.wrap{max-width:var(--container);margin:0 auto;padding:0 24px}
+.disp{font-family:"Jost",sans-serif;font-weight:600;letter-spacing:-0.01em;line-height:1.08}
+.t-hero{font-size:clamp(2.7rem,6vw,4.5rem);font-weight:600;letter-spacing:-0.018em}
+.t-display{font-size:clamp(1.8rem,3.6vw,2.7rem)}
+.t-title{font-size:clamp(1.25rem,2.1vw,1.6rem);line-height:1.15}
+.t-lead{font-size:clamp(1.06rem,1.5vw,1.24rem);color:var(--ink-74);line-height:1.55}
+.t-eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--act);font-family:"Hanken Grotesk",sans-serif}
+.t-source{font-size:.82rem;color:var(--ink-56);line-height:1.5}
+.skip-link{position:absolute;left:1rem;top:-4rem;z-index:200;background:var(--ink);color:#fff;padding:.7rem 1.2rem;border-radius:6px;transition:top .2s;text-decoration:none;font-weight:600}
+.skip-link:focus{top:1rem}
+:focus-visible{outline:3px solid var(--act);outline-offset:3px;border-radius:2px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+.concept-note{background:var(--abyss);color:var(--deep-ink-70);text-align:center;font-size:.8rem;padding:.45rem 1rem}
+.concept-note a{color:var(--deep-ink)}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);-webkit-backdrop-filter:saturate(1.4) blur(16px);backdrop-filter:saturate(1.4) blur(16px);border-bottom:1px solid rgba(10,23,41,.1)}
+.nav-inner{display:flex;align-items:center;gap:1.5rem;height:72px;max-width:var(--container);margin:0 auto;padding:0 24px}
+.brand{display:flex;align-items:center;text-decoration:none;margin-right:auto}
+.brand img{display:block;height:40px;width:auto}
+.nav-links{display:flex;gap:1.3rem;list-style:none}
+.nav-links>li{display:flex;align-items:center}
+.nav-links a{color:var(--ink-74);text-decoration:none;font-size:.93rem;font-weight:600;transition:color .2s}
+.nav-links a:hover,.nav-links a[aria-current="page"]{color:var(--ink)}
+.nav-links>li>a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--act)}
+.lang{display:flex;align-items:center;border:1px solid rgba(10,23,41,.18);border-radius:var(--radius);overflow:hidden}
+.lang button{background:none;border:none;cursor:pointer;font-family:"Hanken Grotesk",sans-serif;font-size:.82rem;font-weight:700;padding:.42rem .8rem;color:var(--ink-56);transition:background .2s,color .2s}
+.lang button[aria-pressed="true"]{background:var(--navy);color:#fff}
+.btn{display:inline-flex;align-items:center;gap:.5rem;border-radius:var(--radius);text-decoration:none;font-weight:700;border:none;cursor:pointer;font-family:"Hanken Grotesk",sans-serif;transition:transform .18s var(--ease),background .25s,color .25s;white-space:nowrap}
+.btn:active{transform:scale(.96)}
+.btn-primary{background:var(--navy);color:#fff;padding:.7rem 1.5rem;font-size:.94rem}
+.btn-primary:hover{background:var(--act-deep)}
+.btn-ghost{border:2px solid rgba(10,23,41,.24);color:var(--ink);padding:.62rem 1.4rem;font-size:.94rem;background:none}
+.btn-ghost:hover{border-color:var(--act);color:var(--act)}
+.btn-quiet{color:var(--act);background:none;padding:.5rem .2rem;font-size:.95rem}
+.btn-quiet::after{content:"→";margin-left:.15rem;transition:transform .3s var(--ease)}
+.btn-quiet:hover::after{transform:translateX(4px)}
+.btn-lg{padding:.95rem 2rem;font-size:1.02rem}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:.5rem}
+.nav-toggle span{display:block;width:22px;height:2px;background:var(--ink);margin:5px 0;transition:.3s var(--ease)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;background:var(--deep);color:#fff;overflow:clip}
+#hero-shader{position:absolute;inset:0;opacity:.85}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,23,41,.55),rgba(10,23,41,.6) 70%,rgba(10,23,41,.92));pointer-events:none}
+.hero-inner{position:relative;z-index:2;padding:9.5rem 24px 7.5rem;max-width:var(--container);margin:0 auto}
+.hero .t-eyebrow{color:var(--cyan)}
+.hero h1{color:#fff;max-width:13ch;margin:.9rem 0 1.4rem}
+.hero p{color:rgba(238,244,249,.88);max-width:36em;font-size:clamp(1.06rem,1.5vw,1.24rem)}
+.hero-ctas{display:flex;gap:1rem;margin-top:2.4rem;flex-wrap:wrap}
+.hero .btn-primary{background:var(--cyan);color:var(--deep)}
+.hero .btn-primary:hover{background:#a3d4e8}
+.hero .btn-ghost{border-color:rgba(238,244,249,.4);color:#fff}
+.hero .btn-ghost:hover{border-color:var(--cyan);color:var(--cyan)}
+.hero-foot{position:relative;z-index:2;padding:0 24px 2rem;max-width:var(--container);margin:0 auto;font-size:.8rem;color:rgba(238,244,249,.55)}
+
+/* ---------- layout ---------- */
+section{scroll-margin-top:88px}
+.pad{padding:6rem 0}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-bottom:2.8rem}
+.sec-head .t-lead{max-width:32em}
+.demo-note{display:inline-block;background:var(--ice);border-radius:8px;padding:.5rem .9rem;font-size:.8rem;color:var(--ink-56);margin-top:1.2rem}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+
+.deep-band{background:var(--deep);color:var(--deep-ink)}
+.deep-band .t-eyebrow{color:var(--cyan)}
+.deep-band h2,.deep-band h3{color:#fff}
+.deep-band p{color:var(--deep-ink-70)}
+.cyan-band{background:var(--navy);color:#fff;text-align:center}
+.cyan-band h2{color:#fff;max-width:26ch;margin:0 auto}
+.cyan-band p{color:rgba(255,255,255,.9);max-width:36em;margin:1.2rem auto 0}
+.cyan-band .btn{background:var(--cyan);color:var(--deep);margin-top:2rem}
+.cyan-band .btn:hover{background:#a3d4e8}
+
+/* ---------- stat strip ---------- */
+.proof{border-top:1px solid rgba(10,23,41,.12);border-bottom:1px solid rgba(10,23,41,.12);background:var(--ice)}
+.proof-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;padding:2.1rem 24px;max-width:var(--container);margin:0 auto}
+.proof b{font-family:"Jost",sans-serif;font-size:2.1rem;font-weight:600;display:block;line-height:1.05}
+.proof span{font-size:.88rem;color:var(--ink-56)}
+
+/* ---------- lots ---------- */
+.lots{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.lot{background:var(--surface);border:1px solid rgba(10,23,41,.14);border-radius:14px;padding:1.6rem 1.5rem 1.5rem;display:flex;flex-direction:column;gap:.7rem;text-decoration:none;color:var(--ink);transition:border-color .25s,transform .35s var(--ease)}
+.lot:hover{border-color:var(--act);transform:translateY(-3px)}
+.lot .k{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--act)}
+.lot h3{font-family:"Jost",sans-serif;font-weight:600;font-size:1.3rem;line-height:1.15}
+.lot p{font-size:.93rem;color:var(--ink-74)}
+.lot .val{font-family:"Jost",sans-serif;font-size:1.5rem;font-weight:600;margin-top:auto;padding-top:.8rem}
+.lot .val small{font-size:.78rem;font-weight:400;color:var(--ink-56);display:block;font-family:"Hanken Grotesk",sans-serif}
+.lot .foot{font-size:.85rem;color:var(--act);font-weight:700}
+.lot .foot::after{content:"→";margin-left:.3rem}
+
+/* ---------- imagery ---------- */
+.figure{border-radius:14px;overflow:hidden;position:relative;background:var(--ice)}
+.figure img{display:block;width:100%;height:auto}
+.fig-cap{font-size:.78rem;color:var(--ink-56);margin-top:.55rem}
+.fig-cap a{color:inherit}
+.maps{display:grid;grid-template-columns:1.4fr 1fr;gap:1.4rem;align-items:start}
+.webp-chip{position:absolute;top:.8rem;right:.8rem;background:rgba(10,23,41,.85);color:#fff;font-size:.72rem;font-weight:700;padding:.35rem .7rem;border-radius:var(--radius)}
+
+/* ---------- twin ---------- */
+.twin{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid rgba(238,244,249,.16);border-radius:14px;overflow:hidden}
+.twin>div{padding:1.8rem 1.6rem;border-left:1px solid rgba(238,244,249,.16)}
+.twin>div:first-child{border-left:none}
+.twin .k{font-family:"Jost",sans-serif;font-size:1.35rem;font-weight:600;color:var(--cyan);display:block;margin-bottom:.6rem}
+.twin p{font-size:.94rem}
+
+/* ---------- timeline ---------- */
+.tl{list-style:none;display:grid;gap:0}
+.tl li{display:grid;grid-template-columns:110px 1fr;gap:1.6rem;padding:1.5rem 0;border-top:1px solid rgba(10,23,41,.12)}
+.tl li:last-child{border-bottom:1px solid rgba(10,23,41,.12)}
+.tl b{font-family:"Jost",sans-serif;font-size:1.3rem;font-weight:600;color:var(--act)}
+.tl p{color:var(--ink-74);max-width:46em}
+
+/* ---------- pillars ---------- */
+.pillars{display:grid;gap:0}
+.pillar{display:grid;grid-template-columns:1fr 2fr;gap:2rem;padding:2rem 0;border-top:1px solid rgba(10,23,41,.12);align-items:baseline}
+.pillar:last-child{border-bottom:1px solid rgba(10,23,41,.12)}
+.pillar h3{font-family:"Jost",sans-serif;font-weight:600;font-size:1.45rem}
+.pillar p{color:var(--ink-74);max-width:52em}
+
+/* ---------- footer ---------- */
+footer{background:var(--abyss);color:var(--deep-ink-70);padding:3.6rem 0 2.6rem;font-size:.92rem}
+footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;max-width:var(--container);margin:0 auto;padding:0 24px}
+footer h4{color:#fff;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.9rem}
+footer a{color:var(--deep-ink-70)}
+footer a:hover{color:#fff}
+footer ul{list-style:none;display:grid;gap:.5rem}
+.foot-legal{max-width:var(--container);margin:2.6rem auto 0;padding:1.4rem 24px 0;border-top:1px solid rgba(238,244,249,.14);font-size:.8rem;color:rgba(238,244,249,.5)}
+.foot-legal a{color:rgba(238,244,249,.7)}
+
+/* ---------- reveals ---------- */
+.motion .rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.motion .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.rv{opacity:1 !important;transform:none !important}}
+
+/* ---------- responsive ---------- */
+@media (max-width:960px){
+  .lots,.twin,.maps{grid-template-columns:1fr}
+  .twin>div{border-left:none;border-top:1px solid rgba(238,244,249,.16)}
+  .twin>div:first-child{border-top:none}
+  .split{grid-template-columns:1fr;gap:2.4rem}
+  .proof-inner{grid-template-columns:repeat(2,1fr)}
+  footer .cols{grid-template-columns:1fr 1fr}
+  .pillar{grid-template-columns:1fr;gap:.6rem}
+  .nav-links{position:fixed;inset:72px 0 auto 0;background:var(--paper);flex-direction:column;gap:0;padding:.6rem 0 1rem;border-bottom:1px solid rgba(10,23,41,.12);transform:translateY(-130%);transition:transform .35s var(--ease);z-index:99}
+  .nav-links.open{transform:none}
+  .nav-links a{display:block;padding:.8rem 24px;font-size:1.05rem}
+  .nav-toggle{display:block}
+  .nav .btn-primary{display:none}
+}
+@media (max-width:560px){.hero-inner{padding:7rem 24px 5.5rem}.pad{padding:4.2rem 0}footer .cols{grid-template-columns:1fr}}
+@media (prefers-reduced-motion: reduce){.nav-links{transition:none}.lot,.btn,.btn-quiet::after{transition:none;transform:none!important}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
+<div class="concept-note" data-i18n="note">Unaffiliated redesign concept prepared for tender 26516-MO-WEB by Midnight Space. Not the official Mercator Ocean website.</div>
+
+<nav class="nav" aria-label="Main">
+  <div class="nav-inner">
+    <a class="brand" href="index.html" aria-current="page" aria-label="Mercator Ocean concept home">
+      <img src="assets/logo-moi-dark.svg" alt="Mercator Ocean International logo" width="142" height="40">
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="audit.html" data-i18n="nav1">Audit · Lot 1</a></li>
+      <li><a href="intranet.html" data-i18n="nav2">Development · Lot 2</a></li>
+      <li><a href="translation.html" data-i18n="nav3">Translation · Lot 3</a></li>
+      <li><a href="approach.html" data-i18n="nav4">Approach</a></li>
+      <li><a href="credits.html" data-i18n="nav5">Credits</a></li>
+    </ul>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" id="lang-en" aria-pressed="true">EN</button>
+      <button type="button" id="lang-fr" aria-pressed="false">FR</button>
+    </div>
+    <a class="btn btn-primary" href="approach.html" data-i18n="navCta">Delivery approach</a>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div id="hero-shader" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <p class="t-eyebrow rv" data-i18n="heroEyebrow">A website concept for Mercator Ocean International</p>
+    <h1 class="disp t-hero rv" data-i18n="heroH1">Digital Ocean knowledge, accessible to all.</h1>
+    <p class="rv" data-i18n="heroSub">One coherent web platform for the organisation that operates the Copernicus Marine Service and co-develops the European Digital Twin of the Ocean. Built as a working answer to consultation 26516-MO-WEB: audit, development, and a bilingual layer you can try right now.</p>
+    <div class="hero-ctas rv">
+      <a class="btn btn-primary btn-lg" href="audit.html" data-i18n="heroCta1">Preview the Lot 1 audit</a>
+      <a class="btn btn-ghost btn-lg" href="approach.html" data-i18n="heroCta2">How we would deliver</a>
+    </div>
+  </div>
+  <p class="hero-foot" data-i18n="heroFoot">The EN / FR switch in the navigation is live on this homepage, as a working preview of the Lot 3 bilingual layer. The full demo is on the Translation page.</p>
+</header>
+
+<!-- ============ PROOF ============ -->
+<div class="proof" role="group" aria-label="Key figures">
+  <div class="proof-inner">
+    <div class="rv"><b data-count="1500000" data-suffix="+">1,500,000+</b><span data-i18n="p1">Copernicus Marine users worldwide</span></div>
+    <div class="rv"><b data-count="120">120</b><span data-i18n="p2">experts based in Toulouse</span></div>
+    <div class="rv"><b data-count="30">30</b><span data-i18n="p3">years of operational oceanography</span></div>
+    <div class="rv"><b data-count="12">12</b><span data-i18n="p4">European countries endorsing the Mercator International Centre</span></div>
+  </div>
+</div>
+
+<!-- ============ LOTS ============ -->
+<section class="pad" aria-labelledby="lots-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="t-eyebrow rv" data-i18n="lotsEyebrow">Consultation 26516-MO-WEB</p>
+        <h2 class="disp t-display rv" id="lots-h" data-i18n="lotsH">Three lots, one coherent platform.</h2>
+      </div>
+      <p class="t-lead rv" data-i18n="lotsLead">Each lot is previewed in this concept as a working page, not a promise. Award criteria weight technical value at 70 percent; we lead with evidence.</p>
+    </div>
+    <div class="lots">
+      <a class="lot rv" href="audit.html">
+        <span class="k" data-i18n="lot1k">Lot 1 · 26516L01</span>
+        <h3 data-i18n="lot1h">SEO, performance and UX audit</h3>
+        <p data-i18n="lot1p">A complete audit of natural referencing, performance and user experience. We already measured your live homepage; the findings page is the preview.</p>
+        <span class="val"><span data-i18n="lot1val">€80,000</span> <small data-i18n="lot1v">estimated lot value, 24 months</small></span>
+        <span class="foot" data-i18n="lot1f">See real findings</span>
+      </a>
+      <a class="lot rv" href="intranet.html">
+        <span class="k" data-i18n="lot2k">Lot 2 · 26516L02</span>
+        <h3 data-i18n="lot2h">Development and technical maintenance</h3>
+        <p data-i18n="lot2p">Corporate website and intranet: evolutions, security, performance budgets, and a maintenance cadence that keeps a science institution publishing.</p>
+        <span class="val"><span data-i18n="lot2val">€110,000</span> <small data-i18n="lot2v">estimated lot value, 24 months</small></span>
+        <span class="foot" data-i18n="lot2f">See the concept</span>
+      </a>
+      <a class="lot rv" href="translation.html">
+        <span class="k" data-i18n="lot3k">Lot 3 · 26516L03</span>
+        <h3 data-i18n="lot3h">Bilingual EN / FR automatic translation</h3>
+        <p data-i18n="lot3p">Machine translation with a scientific glossary and human review workflow. The language switch on this very page is the working preview.</p>
+        <span class="val"><span data-i18n="lot3val">€20,000</span> <small data-i18n="lot3v">estimated lot value, 24 months</small></span>
+        <span class="foot" data-i18n="lot3f">Try the bilingual layer</span>
+      </a>
+    </div>
+    <p class="demo-note rv" data-i18n="lotsNote">Lot values are the buyer's estimates published in TED notice 478028-2026. One tenderer may bid for all three lots.</p>
+  </div>
+</section>
+
+<!-- ============ OCEAN DATA / MAPS ============ -->
+<section class="pad deep-band" aria-labelledby="data-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="t-eyebrow rv" data-i18n="dataEyebrow">Ocean data, treated as content</p>
+        <h2 class="disp t-display rv" id="data-h" data-i18n="dataH">Your science is the imagery.</h2>
+      </div>
+      <p class="t-lead rv" style="color:var(--deep-ink-70)" data-i18n="dataLead">No stock photography. These are Mercator Ocean's own sea surface temperature forecasts, served in modern formats at a fraction of their current weight.</p>
+    </div>
+    <div class="maps">
+      <figure class="figure rv">
+        <img src="assets/sst-global.webp" alt="Global sea surface temperature anomaly forecast map for 1 August 2026, GLO12V4 model" width="1400" height="867" loading="lazy">
+        <span class="webp-chip">WebP · 168 KB</span>
+        <figcaption class="fig-cap" style="color:rgba(238,244,249,.6);padding:.55rem .9rem" data-i18n="map1cap">Global SST anomaly forecast, GLO12V4, 1 Aug 2026. © Mercator Ocean International.</figcaption>
+      </figure>
+      <figure class="figure rv">
+        <img src="assets/sst-europe.webp" alt="European sea surface temperature anomaly forecast map for 1 August 2026" width="1200" height="968" loading="lazy">
+        <span class="webp-chip">WebP · 93 KB</span>
+        <figcaption class="fig-cap" style="color:rgba(238,244,249,.6);padding:.55rem .9rem" data-i18n="map2cap">European SST anomaly forecast, 1 Aug 2026. © Mercator Ocean International.</figcaption>
+      </figure>
+    </div>
+    <p class="demo-note rv" style="background:rgba(238,244,249,.08);color:rgba(238,244,249,.65)" data-i18n="dataNote">Weights shown are the WebP files this page actually serves, converted from the original PNGs published on mercator-ocean.eu. Conversion approach on the audit page.</p>
+  </div>
+</section>
+
+<!-- ============ DIGITAL TWIN ============ -->
+<section class="pad" aria-labelledby="twin-h" style="background:var(--ice)">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <p class="t-eyebrow rv" data-i18n="twinEyebrow">Ocean intelligence</p>
+        <h2 class="disp t-display rv" id="twin-h" data-i18n="twinH">The Digital Twin, told simply.</h2>
+        <p class="t-lead rv" style="margin-top:1.2rem" data-i18n="twinLead">A dynamic, science-based digital replica of the Ocean, coordinated by Mercator Ocean on behalf of the European Commission. The concept page structure gives each capability layer one clear sentence.</p>
+        <a class="btn btn-quiet rv" href="approach.html" data-i18n="twinCta">How we structure science content</a>
+      </div>
+      <div class="twin rv" style="background:var(--deep);color:var(--deep-ink)">
+        <div><span class="k">What now</span><p style="color:var(--deep-ink-70)" data-i18n="twin1">The first question the capability layers answer: the state of the Ocean right now.</p></div>
+        <div><span class="k">What next</span><p style="color:var(--deep-ink-70)" data-i18n="twin2">The second question: where the Ocean is heading next.</p></div>
+        <div><span class="k">What if</span><p style="color:var(--deep-ink-70)" data-i18n="twin3">The third question: what would happen under a different scenario.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRANSFORMATION TIMELINE ============ -->
+<section class="pad" aria-labelledby="tl-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="t-eyebrow rv" data-i18n="tlEyebrow">An institution in motion</p>
+        <h2 class="disp t-display rv" id="tl-h" data-i18n="tlH">Becoming intergovernmental.</h2>
+      </div>
+      <p class="t-lead rv" data-i18n="tlLead">The website of an organisation changing legal form has to communicate institutional weight. The concept treats the transformation as a first-class story.</p>
+    </div>
+    <ul class="tl">
+      <li class="rv"><b data-i18n="tl1y">30 years</b><p data-i18n="tl1">Three decades of operational oceanography in Toulouse, growing to a team of 120 experts.</p></li>
+      <li class="rv"><b>2022</b><p data-i18n="tl2">At the One Ocean Summit in Brest, six European states commit to transforming Mercator Ocean into an intergovernmental organisation.</p></li>
+      <li class="rv"><b>2025</b><p data-i18n="tl3">At the UN Ocean Conference in Nice, twelve European countries, Belgium among them, endorse the joint Declaration for the Mercator International Centre for the Ocean.</p></li>
+      <li class="rv"><b data-i18n="tl4y">Today</b><p data-i18n="tl4">Mercator Ocean operates the Copernicus Marine Service under EU mandate and hosts the OceanPrediction Decade Collaborative Centre under IOC-UNESCO.</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ PILLARS ============ -->
+<section class="pad deep-band" aria-labelledby="pil-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="t-eyebrow rv" data-i18n="pilEyebrow">Information architecture</p>
+        <h2 class="disp t-display rv" id="pil-h" data-i18n="pilH">Three pillars, mirrored in navigation.</h2>
+      </div>
+    </div>
+    <div class="pillars">
+      <div class="pillar rv">
+        <h3 data-i18n="pil1h">Ocean Data</h3>
+        <p style="color:var(--deep-ink-70)" data-i18n="pil1p">Monitoring and forecasting, research and innovation, and open access to Ocean data, from the GLORYS12 reanalysis to the GLONET AI forecasting system.</p>
+      </div>
+      <div class="pillar rv">
+        <h3 data-i18n="pil2h">Ocean Community</h3>
+        <p style="color:var(--deep-ink-70)" data-i18n="pil2p">Global mobilisation, community coordination and capacity development, with partners including ESA, EUMETSAT, EuroGOOS and EMODnet.</p>
+      </div>
+      <div class="pillar rv">
+        <h3 data-i18n="pil3h">Ocean Intelligence</h3>
+        <p style="color:var(--deep-ink-70)" data-i18n="pil3p">The Digital Twin of the Ocean, Ocean bulletins and insights, and Ocean knowledge: decision-support built on trusted science.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="pad cyan-band" aria-labelledby="cta-h">
+  <div class="wrap">
+    <h2 class="disp t-display rv" id="cta-h" data-i18n="ctaH">Built as a working preview, not a promise.</h2>
+    <p class="rv" data-i18n="ctaP">Every page of this concept maps to a lot of consultation 26516-MO-WEB. The audit contains real measurements of the live site. The bilingual switch works. The approach page explains delivery, cadence and pricing logic.</p>
+    <a class="btn btn-lg rv" href="approach.html" data-i18n="ctaBtn">Read the delivery approach</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="cols">
+    <div>
+      <h4>Mercator Ocean International · Concept</h4>
+      <p data-i18n="footAbout">An unaffiliated redesign concept prepared as a working annex to Midnight Space's tender response for consultation 26516-MO-WEB SEO TRANSLATION (TED 478028-2026). All organisational facts are drawn from mercator-ocean.eu.</p>
+    </div>
+    <div>
+      <h4 data-i18n="footPages">Pages</h4>
+      <ul>
+        <li><a href="audit.html" data-i18n="nav1">Audit · Lot 1</a></li>
+        <li><a href="intranet.html" data-i18n="nav2">Development · Lot 2</a></li>
+        <li><a href="translation.html" data-i18n="nav3">Translation · Lot 3</a></li>
+        <li><a href="approach.html" data-i18n="nav4">Approach</a></li>
+        <li><a href="credits.html" data-i18n="nav5">Credits</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Midnight Space</h4>
+      <ul>
+        <li><a href="https://midnightspaceconsultancy.com" rel="noopener">midnightspaceconsultancy.com</a></li>
+        <li><a href="https://www.mercator-ocean.eu/" rel="noopener" data-i18n="footReal">Official Mercator Ocean site</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-legal">
+    <p data-i18n="footLegal">Imagery © Mercator Ocean International, used within this non-commercial concept with credit; removed immediately on request. Concept, design and code © Midnight Space.</p>
+  </div>
+</footer>
+
+<script>
+/* ---------- nav toggle ---------- */
+const toggle=document.querySelector('.nav-toggle'),links=document.getElementById('nav-links');
+toggle.addEventListener('click',()=>{const o=links.classList.toggle('open');toggle.setAttribute('aria-expanded',o)});
+links.addEventListener('click',e=>{if(e.target.closest('a')){links.classList.remove('open');toggle.setAttribute('aria-expanded','false');}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&links.classList.contains('open')){links.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.focus();}});
+
+/* ---------- EN/FR bilingual layer: the working Lot 3 preview ----------
+   English lives in the markup. French lives in the dictionary below.
+   In production this dictionary is generated by the machine-translation
+   pipeline (engine + scientific glossary + human review) described on
+   translation.html; here it demonstrates instant, layout-safe switching. */
+const FR={
+skip:"Aller au contenu",
+note:"Concept de refonte non affilié, préparé pour la consultation 26516-MO-WEB par Midnight Space. Ceci n'est pas le site officiel de Mercator Ocean.",
+nav1:"Audit · Lot 1",nav2:"Développement · Lot 2",nav3:"Traduction · Lot 3",nav4:"Approche",nav5:"Crédits",
+navCta:"Approche de réalisation",
+heroEyebrow:"Un concept de site pour Mercator Ocean International",
+heroH1:"La connaissance numérique de l'Océan, accessible à tous.",
+heroSub:"Une plateforme web cohérente pour l'organisation qui met en œuvre le service Copernicus Marine et co-développe le jumeau numérique européen de l'Océan. Conçue comme une réponse concrète à la consultation 26516-MO-WEB : audit, développement et couche bilingue que vous pouvez essayer dès maintenant.",
+heroCta1:"Aperçu de l'audit du Lot 1",heroCta2:"Notre méthode de réalisation",
+heroFoot:"Le sélecteur EN / FR dans la navigation est fonctionnel sur cette page d'accueil, comme aperçu concret de la couche bilingue du Lot 3. La démonstration complète se trouve sur la page Traduction.",
+p1:"utilisateurs de Copernicus Marine dans le monde",p2:"experts basés à Toulouse",p3:"années d'océanographie opérationnelle",p4:"pays européens soutenant le Centre International Mercator",
+lotsEyebrow:"Consultation 26516-MO-WEB",lotsH:"Trois lots, une plateforme cohérente.",
+lotsLead:"Chaque lot est illustré dans ce concept par une page fonctionnelle, pas une promesse. Les critères d'attribution pondèrent la valeur technique à 70 pour cent ; nous privilégions la preuve.",
+lot1k:"Lot 1 · 26516L01",lot1h:"Audit SEO, performance et UX",
+lot1p:"Un audit complet du référencement naturel, de la performance et de l'expérience utilisateur. Nous avons déjà mesuré votre page d'accueil ; la page de constats en est l'aperçu.",
+lot1val:"80 000 €",lot1v:"valeur estimée du lot, 24 mois",lot1f:"Voir les constats réels",
+lot2k:"Lot 2 · 26516L02",lot2h:"Développement et maintenance technique",
+lot2p:"Site institutionnel et intranet : évolutions, sécurité, budgets de performance et une cadence de maintenance qui permet à une institution scientifique de publier sans friction.",
+lot2val:"110 000 €",lot2v:"valeur estimée du lot, 24 mois",lot2f:"Voir le concept",
+lot3k:"Lot 3 · 26516L03",lot3h:"Traduction automatique bilingue EN / FR",
+lot3p:"Traduction automatique avec glossaire scientifique et relecture humaine. Le sélecteur de langue de cette page en est l'aperçu fonctionnel.",
+lot3val:"20 000 €",lot3v:"valeur estimée du lot, 24 mois",lot3f:"Essayer la couche bilingue",
+lotsNote:"Les valeurs des lots sont les estimations de l'acheteur publiées dans l'avis TED 478028-2026. Un même candidat peut soumissionner aux trois lots.",
+dataEyebrow:"Les données océaniques comme contenu",dataH:"Votre science est l'imagerie.",
+dataLead:"Aucune photo de banque d'images. Ce sont les propres prévisions de température de surface de la mer de Mercator Ocean, servies dans des formats modernes à une fraction de leur poids actuel.",
+map1cap:"Prévision d'anomalie de SST globale, GLO12V4, 1er août 2026. © Mercator Ocean International.",
+map2cap:"Prévision d'anomalie de SST européenne, 1er août 2026. © Mercator Ocean International.",
+dataNote:"Les poids affichés sont ceux des fichiers WebP réellement servis par cette page, convertis depuis les PNG originaux publiés sur mercator-ocean.eu. Méthode de conversion sur la page d'audit.",
+twinEyebrow:"Intelligence océanique",twinH:"Le jumeau numérique, expliqué simplement.",
+twinLead:"Une réplique numérique dynamique et scientifique de l'Océan, coordonnée par Mercator Ocean pour le compte de la Commission européenne. La structure de page du concept donne à chaque couche une phrase claire.",
+twinCta:"Comment nous structurons le contenu scientifique",
+twin1:"La première question à laquelle répondent les couches de capacités : l'état de l'Océan en ce moment.",
+twin2:"La deuxième question : comment l'Océan évoluera ensuite.",
+twin3:"La troisième question : ce qui se passerait dans un autre scénario.",
+tlEyebrow:"Une institution en mouvement",tlH:"Devenir intergouvernemental.",
+tlLead:"Le site d'une organisation qui change de forme juridique doit communiquer un poids institutionnel. Le concept traite la transformation comme un récit de premier plan.",
+tl1y:"30 ans",tl1:"Trois décennies d'océanographie opérationnelle à Toulouse, avec aujourd'hui une équipe de 120 experts.",
+tl2:"Au One Ocean Summit de Brest, six États européens s'engagent à transformer Mercator Ocean en organisation intergouvernementale.",
+tl3:"À la Conférence des Nations Unies sur l'Océan à Nice, douze pays européens, dont la Belgique, approuvent la Déclaration commune pour le Centre International Mercator pour l'Océan.",
+tl4y:"Aujourd'hui",tl4:"Mercator Ocean met en œuvre le service Copernicus Marine sous mandat de l'UE et héberge le Centre Collaboratif OceanPrediction sous l'égide de la COI-UNESCO.",
+pilEyebrow:"Architecture de l'information",pilH:"Trois piliers, reflétés dans la navigation.",
+pil1h:"Données océaniques",
+pil1p:"Surveillance et prévision, recherche et innovation, et accès ouvert aux données océaniques, de la réanalyse GLORYS12 au système de prévision par IA GLONET.",
+pil2h:"Communauté océanique",
+pil2p:"Mobilisation mondiale, coordination communautaire et développement des capacités, avec des partenaires tels que l'ESA, EUMETSAT, EuroGOOS et EMODnet.",
+pil3h:"Intelligence océanique",
+pil3p:"Le jumeau numérique de l'Océan, les bulletins et analyses océaniques, et la connaissance de l'Océan : une aide à la décision fondée sur une science de confiance.",
+ctaH:"Conçu comme un aperçu fonctionnel, pas une promesse.",
+ctaP:"Chaque page de ce concept correspond à un lot de la consultation 26516-MO-WEB. L'audit contient des mesures réelles du site en production. Le sélecteur bilingue fonctionne. La page Approche explique la réalisation, la cadence et la logique tarifaire.",
+ctaBtn:"Lire l'approche de réalisation",
+footAbout:"Concept de refonte non affilié, préparé comme annexe fonctionnelle à la réponse de Midnight Space à la consultation 26516-MO-WEB SEO TRANSLATION (TED 478028-2026). Tous les faits organisationnels proviennent de mercator-ocean.eu.",
+footPages:"Pages",footReal:"Site officiel de Mercator Ocean",
+footLegal:"Imagerie © Mercator Ocean International, utilisée dans ce concept non commercial avec crédit ; retirée immédiatement sur demande. Concept, design et code © Midnight Space."
+};
+const EN={};
+document.querySelectorAll('[data-i18n]').forEach(el=>{EN[el.getAttribute('data-i18n')]=el.textContent;});
+/* Numbers follow the active language too: 1,500,000+ becomes 1 500 000+ in FR. */
+const numLocale=()=>document.documentElement.lang==='fr'?'fr-FR':'en-US';
+function formatCounts(){
+  document.querySelectorAll('.proof b[data-count]').forEach(el=>{
+    el.textContent=parseInt(el.getAttribute('data-count'),10).toLocaleString(numLocale())+(el.getAttribute('data-suffix')||'');
+  });
+}
+function setLang(l){
+  const dict=l==='fr'?FR:EN;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(dict[k])el.textContent=dict[k];});
+  document.documentElement.lang=l;
+  formatCounts();
+  document.getElementById('lang-en').setAttribute('aria-pressed',l==='en');
+  document.getElementById('lang-fr').setAttribute('aria-pressed',l==='fr');
+  try{localStorage.setItem('mo-lang',l)}catch(e){}
+}
+document.getElementById('lang-en').addEventListener('click',()=>setLang('en'));
+document.getElementById('lang-fr').addEventListener('click',()=>setLang('fr'));
+try{if(localStorage.getItem('mo-lang')==='fr')setLang('fr')}catch(e){}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" integrity="sha384-HOvlOYPIs/zjoIkWUGXkVmXsjr8GuZLV+Q+rcPwmJOVZVpvTSXQChiN4t9Euv9Vc" crossorigin="anonymous" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" integrity="sha384-P8VzCVnT9NBUkMrpcIZrJbA7EBjJvh/fJS6PmP+4nLIM284DtsImIv8D0fFjIkeh" crossorigin="anonymous" defer></script>
+<script defer>
+window.addEventListener('DOMContentLoaded',()=>{
+if(window.gsap&&window.ScrollTrigger&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  gsap.registerPlugin(ScrollTrigger);
+  document.documentElement.classList.add('motion');
+  setTimeout(()=>{if(!ScrollTrigger.getAll().length)document.querySelectorAll('.rv:not(.in)').forEach(el=>el.classList.add('in'));},3000);
+  document.querySelectorAll('.hero .rv, .hero-foot').forEach((el,i)=>setTimeout(()=>el.classList.add('in'),180+i*90));
+  ScrollTrigger.batch('.rv:not(.hero .rv)',{start:'top 88%',once:true,onEnter:b=>b.forEach((el,i)=>setTimeout(()=>el.classList.add('in'),i*80))});
+  document.querySelectorAll('.proof b[data-count]').forEach(el=>{
+    const target=parseInt(el.getAttribute('data-count'),10),suffix=el.getAttribute('data-suffix')||'',obj={v:0};
+    if(!target)return;
+    gsap.to(obj,{v:target,duration:1.6,ease:'power2.out',
+      scrollTrigger:{trigger:el,start:'top 92%',once:true},
+      onUpdate(){el.textContent=Math.round(obj.v).toLocaleString(numLocale())+suffix;}});
+  });
+}});
+</script>
+<script type="module">
+/* Hero shader background: the Axion Studio preset (Swirl → ChromaFlow →
+   FlutedGlass → FilmGrain, `shaders` package), regraded to Mercator Ocean's
+   deep navy with sky-cyan currents. Pure enhancement: any failure leaves
+   the plain deep-navy hero. */
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const mountShader = async () => {
+    const host = document.getElementById('hero-shader');
+    if (!host) return;
+    try {
+      const [{ default: React }, { createRoot }, S] = await Promise.all([
+        import('https://esm.sh/react@18.3.1'),
+        import('https://esm.sh/react-dom@18.3.1/client'),
+        import('https://esm.sh/shaders@2.5.124/react?deps=react@18.3.1,react-dom@18.3.1'),
+      ]);
+      const e = React.createElement;
+      const stage = document.createElement('div');
+      stage.style.cssText = 'position:absolute;inset:0';
+      host.prepend(stage);
+      createRoot(stage).render(
+        e(S.Shader, { style: { width: '100%', height: '100%' } },
+          e(S.Swirl, { colorA: '#0a1729', colorB: '#10263f', detail: 1.7 }),
+          e(S.ChromaFlow, {
+            baseColor: '#0a1729',
+            downColor: '#81c5df', leftColor: '#1d3058',
+            rightColor: '#1d3058', upColor: '#81c5df',
+            momentum: 13, radius: 3.5,
+          }),
+          e(S.FlutedGlass, {
+            aberration: 0.61, angle: 31, frequency: 8,
+            highlight: 0.12, highlightSoftness: 0, lightAngle: -90,
+            refraction: 4, shape: 'rounded', softness: 1, speed: 0.15,
+          }),
+          e(S.FilmGrain, { strength: 0.05 })
+        )
+      );
+    } catch (err) {
+      console.warn('hero shader skipped:', err && err.message);
+    }
+  };
+  if (document.readyState === 'complete') setTimeout(mountShader, 300);
+  else window.addEventListener('load', () => setTimeout(mountShader, 300), { once: true });
+}
+</script>
+</body>
+</html>

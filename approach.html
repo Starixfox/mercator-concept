@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delivery Approach · Mercator Ocean Website Concept</title>
+<meta name="description" content="How Midnight Space would deliver all three lots of consultation 26516-MO-WEB: onboarding, the Lot 1 audit, a 24-month development cadence and the EN/FR translation pipeline, from 21 September 2026.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%230A1729'/%3E%3Cpath d='M5 18 Q10 14 16 18 T27 18' stroke='%2381C5DF' stroke-width='2.2' fill='none'/%3E%3Cpath d='M5 13 Q10 9 16 13 T27 13' stroke='%2381C5DF' stroke-width='1.4' fill='none' opacity='.6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0a1729; --ink-74:rgba(10,23,41,.76); --ink-56:rgba(10,23,41,.60);
+  --paper:#ffffff; --ice:#f2f6f9; --surface:#ffffff;
+  --navy:#1d3058; --deep:#0a1729; --abyss:#0b1c2b;
+  --cyan:#81c5df; --act:#15618e; --act-deep:#0f4b6f;
+  --deep-ink:#eef4f9; --deep-ink-70:rgba(238,244,249,.78);
+  --hi:#8c1f26; --hi-bg:#fbeceb; --med:#8a5a12; --med-bg:#fdf3e0; --ok:#1d5c38; --ok-bg:#e9f5ee;
+  --radius:999px; --container:1180px;
+  --ease:cubic-bezier(0.625,0.05,0,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:"Hanken Grotesk",-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.55;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;overflow-x:clip}
+::selection{background:var(--navy);color:#fff}
+.wrap{max-width:var(--container);margin:0 auto;padding:0 24px}
+.disp{font-family:"Jost",sans-serif;font-weight:600;letter-spacing:-0.01em;line-height:1.08}
+.t-hero{font-size:clamp(2.4rem,5vw,3.8rem);font-weight:600;letter-spacing:-0.018em}
+.t-display{font-size:clamp(1.8rem,3.6vw,2.7rem)}
+.t-lead{font-size:clamp(1.06rem,1.5vw,1.24rem);color:var(--ink-74);line-height:1.55}
+.t-eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--act)}
+.skip-link{position:absolute;left:1rem;top:-4rem;z-index:200;background:var(--ink);color:#fff;padding:.7rem 1.2rem;border-radius:6px;transition:top .2s;text-decoration:none;font-weight:600}
+.skip-link:focus{top:1rem}
+:focus-visible{outline:3px solid var(--act);outline-offset:3px;border-radius:2px}
+.concept-note{background:var(--abyss);color:var(--deep-ink-70);text-align:center;font-size:.8rem;padding:.45rem 1rem}
+.concept-note a{color:var(--deep-ink)}
+.nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);-webkit-backdrop-filter:saturate(1.4) blur(16px);backdrop-filter:saturate(1.4) blur(16px);border-bottom:1px solid rgba(10,23,41,.1)}
+.nav-inner{display:flex;align-items:center;gap:1.5rem;height:72px;max-width:var(--container);margin:0 auto;padding:0 24px}
+.brand{display:flex;align-items:center;text-decoration:none;margin-right:auto}
+.brand img{display:block;height:40px;width:auto}
+.nav-links{display:flex;gap:1.3rem;list-style:none}
+.nav-links>li{display:flex;align-items:center}
+.nav-links a{color:var(--ink-74);text-decoration:none;font-size:.93rem;font-weight:600;transition:color .2s}
+.nav-links a:hover,.nav-links a[aria-current="page"]{color:var(--ink)}
+.nav-links>li>a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--act)}
+.btn{display:inline-flex;align-items:center;gap:.5rem;border-radius:var(--radius);text-decoration:none;font-weight:700;border:none;cursor:pointer;font-family:"Hanken Grotesk",sans-serif;transition:transform .18s var(--ease),background .25s,color .25s;white-space:nowrap}
+.btn:active{transform:scale(.96)}
+.btn-primary{background:var(--navy);color:#fff;padding:.7rem 1.5rem;font-size:.94rem}
+.btn-primary:hover{background:var(--act-deep)}
+.btn-lg{padding:.95rem 2rem;font-size:1.02rem}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:.5rem}
+.nav-toggle span{display:block;width:22px;height:2px;background:var(--ink);margin:5px 0;transition:.3s var(--ease)}
+section{scroll-margin-top:88px}
+.pad{padding:6rem 0}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-bottom:2.8rem}
+.sec-head .t-lead{max-width:32em}
+.demo-note{display:inline-block;background:var(--ice);border-radius:8px;padding:.5rem .9rem;font-size:.8rem;color:var(--ink-56);margin-top:1.2rem}
+
+/* hero */
+.hero{background:var(--deep);color:#fff;padding:6.5rem 0 4.5rem}
+.hero .t-eyebrow{color:var(--cyan)}
+.hero h1{color:#fff;max-width:16ch;margin:.9rem 0 1.4rem}
+.hero p{color:rgba(238,244,249,.88);max-width:40em;font-size:clamp(1.02rem,1.4vw,1.18rem)}
+
+/* summary strip */
+.proof{border-top:1px solid rgba(10,23,41,.12);border-bottom:1px solid rgba(10,23,41,.12);background:var(--ice)}
+.proof-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;padding:2.1rem 24px;max-width:var(--container);margin:0 auto}
+.proof b{font-family:"Jost",sans-serif;font-size:2.1rem;font-weight:600;display:block;line-height:1.05}
+.proof span{font-size:.88rem;color:var(--ink-56)}
+
+/* lot rows */
+.lot-row{display:grid;grid-template-columns:180px 1.1fr 1.5fr auto;gap:1.6rem;padding:1.8rem 0;border-top:1px solid rgba(10,23,41,.12);align-items:start}
+.lot-row:last-child{border-bottom:1px solid rgba(10,23,41,.12)}
+.lot-row .ref b{font-family:"Jost",sans-serif;font-size:1.3rem;font-weight:600;color:var(--act);display:block;line-height:1.1}
+.lot-row .ref span{font-size:.82rem;color:var(--ink-56)}
+.lot-row h3{font-family:"Jost",sans-serif;font-weight:600;font-size:1.18rem;line-height:1.2}
+.lot-row p{font-size:.92rem;color:var(--ink-74)}
+.lot-link{font-weight:700;font-size:.92rem;color:var(--act);text-decoration:none;white-space:nowrap;align-self:center}
+.lot-link:hover{text-decoration:underline}
+
+/* timeline */
+.tl{list-style:none;display:grid;gap:0}
+.tl li{display:grid;grid-template-columns:150px 1fr;gap:1.6rem;padding:1.5rem 0;border-top:1px solid rgba(10,23,41,.12)}
+.tl li:last-child{border-bottom:1px solid rgba(10,23,41,.12)}
+.tl b{font-family:"Jost",sans-serif;font-size:1.15rem;font-weight:600;color:var(--act);line-height:1.25}
+.tl h3{font-family:"Jost",sans-serif;font-weight:600;font-size:1.18rem;line-height:1.2;margin-bottom:.35rem}
+.tl p{color:var(--ink-74);max-width:46em;font-size:.95rem}
+
+/* who we are */
+.who{display:grid;grid-template-columns:1.4fr 1fr;gap:3.5rem;align-items:start}
+.who .t-display{margin:.9rem 0 1.2rem}
+.who p+p{margin-top:1rem}
+.who a{color:var(--cyan)}
+.facts{border-top:1px solid rgba(238,244,249,.16);margin-top:.4rem}
+.facts>div{display:flex;justify-content:space-between;gap:1.5rem;padding:.85rem 0;border-bottom:1px solid rgba(238,244,249,.16);font-size:.93rem}
+.facts dt{color:var(--deep-ink-70)}
+.facts dd{color:#fff;text-align:right;font-weight:600}
+.facts dd a{color:var(--cyan);text-decoration:none}
+.facts dd a:hover{text-decoration:underline}
+
+/* standards */
+.scope{display:grid;grid-template-columns:1fr 1fr;gap:0 4rem}
+.scope ul{list-style:none}
+.scope li{padding:1rem 0 1rem 1.8rem;border-top:1px solid rgba(10,23,41,.12);position:relative;color:var(--ink-74)}
+.scope li::before{content:"";position:absolute;left:0;top:1.45rem;width:9px;height:9px;border-radius:50%;background:var(--act)}
+.scope li b{color:var(--ink);font-weight:600}
+
+.deep-band{background:var(--deep);color:var(--deep-ink)}
+.deep-band .t-eyebrow{color:var(--cyan)}
+.deep-band h2,.deep-band h3{color:#fff}
+.deep-band p{color:var(--deep-ink-70)}
+.cyan-band{background:var(--navy);color:#fff;text-align:center}
+.cyan-band h2{color:#fff;max-width:26ch;margin:0 auto}
+.cyan-band p{color:rgba(255,255,255,.9);max-width:36em;margin:1.2rem auto 0}
+.cyan-band .btn{background:var(--cyan);color:var(--deep);margin-top:2rem}
+.cyan-band .btn:hover{background:#a3d4e8}
+
+footer{background:var(--abyss);color:var(--deep-ink-70);padding:3.6rem 0 2.6rem;font-size:.92rem}
+footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;max-width:var(--container);margin:0 auto;padding:0 24px}
+footer h4{color:#fff;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.9rem}
+footer a{color:var(--deep-ink-70)}
+footer a:hover{color:#fff}
+footer ul{list-style:none;display:grid;gap:.5rem}
+.foot-legal{max-width:var(--container);margin:2.6rem auto 0;padding:1.4rem 24px 0;border-top:1px solid rgba(238,244,249,.14);font-size:.8rem;color:rgba(238,244,249,.5)}
+.foot-legal a{color:rgba(238,244,249,.7)}
+
+.motion .rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.motion .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.rv{opacity:1 !important;transform:none !important}}
+
+@media (max-width:960px){
+  .lot-row{grid-template-columns:1fr;gap:.7rem}
+  .lot-link{align-self:start}
+  .who{grid-template-columns:1fr}
+  .scope{grid-template-columns:1fr}
+  .proof-inner{grid-template-columns:repeat(2,1fr)}
+  footer .cols{grid-template-columns:1fr 1fr}
+  .nav-links{position:fixed;inset:72px 0 auto 0;background:var(--paper);flex-direction:column;gap:0;padding:.6rem 0 1rem;border-bottom:1px solid rgba(10,23,41,.12);transform:translateY(-130%);transition:transform .35s var(--ease);z-index:99}
+  .nav-links.open{transform:none}
+  .nav-links a{display:block;padding:.8rem 24px;font-size:1.05rem}
+  .nav-toggle{display:block}
+  .nav .btn-primary{display:none}
+}
+@media (max-width:560px){.pad{padding:4.2rem 0}.hero{padding:4.5rem 0 3.5rem}.tl li{grid-template-columns:1fr;gap:.4rem}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="concept-note">Unaffiliated redesign concept prepared for tender 26516-MO-WEB by Midnight Space. Not the official Mercator Ocean website.</div>
+
+<nav class="nav" aria-label="Main">
+  <div class="nav-inner">
+    <a class="brand" href="index.html" aria-label="Mercator Ocean concept home">
+      <img src="assets/logo-moi-dark.svg" alt="Mercator Ocean International logo" width="142" height="40">
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="audit.html">Audit · Lot 1</a></li>
+      <li><a href="intranet.html">Development · Lot 2</a></li>
+      <li><a href="translation.html">Translation · Lot 3</a></li>
+      <li><a href="approach.html" aria-current="page">Approach</a></li>
+      <li><a href="credits.html">Credits</a></li>
+    </ul>
+    <a class="btn btn-primary" href="audit.html">Read the audit preview</a>
+  </div>
+</nav>
+
+<main id="main">
+
+<header class="hero">
+  <div class="wrap">
+    <p class="t-eyebrow rv">The offer behind the concept</p>
+    <h1 class="disp t-hero rv">Evidence first, then delivery.</h1>
+    <p class="rv">This concept site is the working annex to Midnight Space's tender for consultation 26516-MO-WEB SEO TRANSLATION (TED 478028-2026). The offer itself is submitted electronically through the achatpublic portal by 1 September 2026, 12:00 Paris time. This page sets out how the three lots would actually be delivered.</p>
+  </div>
+</header>
+
+<div class="proof" role="group" aria-label="Key tender facts">
+  <div class="proof-inner">
+    <div class="rv"><b>3</b><span>lots; a single tenderer may bid for and win all three</span></div>
+    <div class="rv"><b>70%</b><span>of the award weight per lot on technical value, 30% on price</span></div>
+    <div class="rv"><b>24 mo</b><span>every lot runs from 21 September 2026</span></div>
+    <div class="rv"><b>12:00</b><span>Paris, 1 September 2026: submission deadline on the portal</span></div>
+  </div>
+</div>
+
+<section class="pad" aria-labelledby="why-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="t-eyebrow rv">Why this concept exists</p>
+        <h2 class="disp t-display rv" id="why-h">Demonstration over description.</h2>
+      </div>
+      <p class="t-lead rv">The award criteria weight technical value at 70 percent. At that weighting a claim of capability is worth little; evidence is worth more. So instead of describing what we would do, this annex does it.</p>
+    </div>
+
+    <div class="lot-row rv">
+      <div class="ref"><b>Lot 1</b><span>SEO, performance and UX audit · €80,000</span></div>
+      <div><h3>Real measurements, not promises.</h3></div>
+      <div><p>The audit page contains findings measured on the live mercator-ocean.eu homepage on 31 July 2026: transfer weight, stylesheet count, missing metadata, absent hreflang. Each finding carries its evidence and its remedy. The method is on display before the contract exists.</p></div>
+      <a class="lot-link" href="audit.html">Read the audit preview<span aria-hidden="true"> →</span></a>
+    </div>
+
+    <div class="lot-row rv">
+      <div class="ref"><b>Lot 2</b><span>Development and maintenance · €110,000</span></div>
+      <div><h3>This site is the sample.</h3></div>
+      <div><p>The concept you are reading is built to the standard proposed for Lot 2: semantic templates, accessibility from the first line, and Mercator Ocean's own SST imagery served as WebP at a fraction of its published weight. The intranet concept has its own page.</p></div>
+      <a class="lot-link" href="intranet.html">See the development concept<span aria-hidden="true"> →</span></a>
+    </div>
+
+    <div class="lot-row rv">
+      <div class="ref"><b>Lot 3</b><span>Automatic EN/FR translation · €20,000</span></div>
+      <div><h3>A working bilingual layer.</h3></div>
+      <div><p>The translation page carries a functioning English/French layer running in the browser: the shape of the Lot 3 pipeline made visible rather than described, alongside the quality controls that keep automatic translation trustworthy on an institutional site.</p></div>
+      <a class="lot-link" href="translation.html">Try the bilingual layer<span aria-hidden="true"> →</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="pad" aria-labelledby="tl-h" style="background:var(--ice)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="t-eyebrow rv">Delivery timeline</p>
+        <h2 class="disp t-display rv" id="tl-h">From award to handover.</h2>
+      </div>
+      <p class="t-lead rv">All three lots start on 21 September 2026 and run for 24 months. The sequence below assumes all three are awarded together; each lot also stands alone.</p>
+    </div>
+    <ul class="tl">
+      <li class="rv"><b>Weeks 1-2</b><div><h3>Onboarding and access</h3><p>Credentials, analytics and Search Console access, repository and hosting handover, intranet access, a shared issue tracker and a kickoff with the editorial team. Nothing ships before access is verified end to end.</p></div></li>
+      <li class="rv"><b>First quarter</b><div><h3>Lot 1: audit fieldwork and delivery</h3><p>The full audit programme runs early, while its findings can still steer everything else: technical crawl, field performance data, log analysis, bilingual keyword mapping, accessibility review and the prioritised roadmap, presented in person or by call.</p></div></li>
+      <li class="rv"><b>Months 1-24</b><div><h3>Lot 2: a continuous cadence</h3><p>Development and technical maintenance of the corporate site and the intranet as a steady rhythm across the full 24 months: planned releases, security updates, editor support and a monthly written status note. No long silences between invoices.</p></div></li>
+      <li class="rv"><b>First quarter, then continuous</b><div><h3>Lot 3: pipeline live, then operated</h3><p>The automatic English/French translation system is implemented and switched on within the first quarter, then operated continuously for the remainder of the contract: glossary maintenance, quality sampling and hreflang integrity checks.</p></div></li>
+      <li class="rv"><b>Month 24</b><div><h3>Re-measurement and handover</h3><p>The audit's own metrics are re-run against the live estate so the work is accountable to its numbers, and handover documentation is delivered so that nothing depends on us to keep running.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="pad deep-band" aria-labelledby="who-h">
+  <div class="wrap">
+    <div class="who">
+      <div>
+        <p class="t-eyebrow rv">Who we are</p>
+        <h2 class="disp t-display rv" id="who-h">A small senior studio.</h2>
+        <p class="rv">Midnight Space is a Belgian web studio led by its founder, Jordan Van Der Sloten. It is small by design: every deliverable in this tender is built and reviewed by the person who signs the offer. There is no sales layer between the promise and the work.</p>
+        <p class="rv">We work from Belgium, in the same timezone as Toulouse, in English and in French. Belgium is among the twelve European countries that endorsed the 2025 Declaration for the Mercator International Centre for the Ocean; we would be a supplier from an endorsing state.</p>
+        <p class="rv">Detailed pricing is in the sealed offer submitted through the achatpublic portal. It is not published here.</p>
+      </div>
+      <dl class="facts rv">
+        <div><dt>Studio</dt><dd>Midnight Space, Belgium</dd></div>
+        <div><dt>Founder</dt><dd>Jordan Van Der Sloten</dd></div>
+        <div><dt>Website</dt><dd><a href="https://midnightspaceconsultancy.com" rel="noopener">midnightspaceconsultancy.com</a></dd></div>
+        <div><dt>Timezone</dt><dd>Same as Toulouse</dd></div>
+        <div><dt>Working languages</dt><dd>English, French</dd></div>
+        <div><dt>Pricing</dt><dd>Sealed offer, via the portal</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="pad" aria-labelledby="std-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="t-eyebrow rv">Standards</p>
+        <h2 class="disp t-display rv" id="std-h">The same bar on everything.</h2>
+      </div>
+      <p class="t-lead rv">These apply to every deliverable in every lot, and this concept site is built to them.</p>
+    </div>
+    <div class="scope">
+      <ul>
+        <li class="rv"><b>WCAG 2.1 AA</b> as an acceptance criterion on every template: skip links, focus states, semantic landmarks, contrast, reduced-motion support. Not an audit afterthought.</li>
+        <li class="rv"><b>Performance budgets</b> agreed up front for page weight and Core Web Vitals, enforced in the build so regressions are caught before they are published.</li>
+        <li class="rv"><b>GDPR-conscious analytics</b>: consent-aware measurement that collects the minimum needed to answer real editorial and product questions.</li>
+      </ul>
+      <ul>
+        <li class="rv"><b>Everything documented</b>: decisions recorded, runbooks for the intranet and the translation pipeline, and a written status note every month.</li>
+        <li class="rv"><b>Owned by the client</b>: code, content, configuration and accounts belong to Mercator Ocean from day one. No supplier lock-in, by contract and by architecture.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="pad cyan-band" aria-labelledby="cta-h">
+  <div class="wrap">
+    <h2 class="disp t-display rv" id="cta-h">See the lots.</h2>
+    <p class="rv">Start with Lot 1: real measurements taken on the live homepage, each with its evidence and its remedy.</p>
+    <a class="btn btn-lg rv" href="audit.html">Read the audit preview</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="cols">
+    <div>
+      <h4>Mercator Ocean International — Concept</h4>
+      <p>An unaffiliated redesign concept prepared as a working annex to Midnight Space's tender response for consultation 26516-MO-WEB SEO TRANSLATION (TED 478028-2026). All measurements dated 31 July 2026.</p>
+    </div>
+    <div>
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="audit.html">Audit · Lot 1</a></li>
+        <li><a href="intranet.html">Development · Lot 2</a></li>
+        <li><a href="translation.html">Translation · Lot 3</a></li>
+        <li><a href="approach.html">Approach</a></li>
+        <li><a href="credits.html">Credits</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Midnight Space</h4>
+      <ul>
+        <li><a href="https://midnightspaceconsultancy.com" rel="noopener">midnightspaceconsultancy.com</a></li>
+        <li><a href="https://www.mercator-ocean.eu/" rel="noopener">Official Mercator Ocean site</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-legal">
+    <p>Imagery © Mercator Ocean International, used within this non-commercial concept with credit; removed immediately on request. Concept, design and code © Midnight Space.</p>
+  </div>
+</footer>
+
+<script>
+const toggle=document.querySelector('.nav-toggle'),links=document.getElementById('nav-links');
+toggle.addEventListener('click',()=>{const o=links.classList.toggle('open');toggle.setAttribute('aria-expanded',o)});
+links.addEventListener('click',e=>{if(e.target.closest('a')){links.classList.remove('open');toggle.setAttribute('aria-expanded','false');}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&links.classList.contains('open')){links.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.focus();}});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" integrity="sha384-HOvlOYPIs/zjoIkWUGXkVmXsjr8GuZLV+Q+rcPwmJOVZVpvTSXQChiN4t9Euv9Vc" crossorigin="anonymous" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" integrity="sha384-P8VzCVnT9NBUkMrpcIZrJbA7EBjJvh/fJS6PmP+4nLIM284DtsImIv8D0fFjIkeh" crossorigin="anonymous" defer></script>
+<script defer>
+window.addEventListener('DOMContentLoaded',()=>{
+if(window.gsap&&window.ScrollTrigger&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  gsap.registerPlugin(ScrollTrigger);
+  document.documentElement.classList.add('motion');
+  setTimeout(()=>{if(!ScrollTrigger.getAll().length)document.querySelectorAll('.rv:not(.in)').forEach(el=>el.classList.add('in'));},3000);
+  document.querySelectorAll('.hero .rv').forEach((el,i)=>setTimeout(()=>el.classList.add('in'),180+i*90));
+  ScrollTrigger.batch('.rv:not(.hero .rv)',{start:'top 88%',once:true,onEnter:b=>b.forEach((el,i)=>setTimeout(()=>el.classList.add('in'),i*80))});
+}});
+</script>
+</body>
+</html>
